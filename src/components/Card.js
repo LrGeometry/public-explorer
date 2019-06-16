@@ -22,26 +22,35 @@ const InnerComp = () => (
   </div>
 );
 
+
+function rnd(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+// const divStyle = {
+//   backgroundColor: "#4fD0e9",
+//   transform: translate3d("0px", "-10px", "0px")
+// };
 class Card extends React.Component {
   render() {
     const { i, x, y, rot, scale, trans, bind, data } = this.props;
     const { name, age, distance, text, pics } = data[i];
-
+    console.log('val', i);
     return (
       <animated.div
         className="flex flex1"
         key={i}
         style={{
           backgroundColor: "#4fD0e9",
-          transform: interpolate(
-            [x, y],
-            (x, y) => `translate3d(${x}px,${y}px,0)`
-          )
+          transform: `translate3d("${rnd(0, 4)}px", "${rnd(-10, -20)}px", "${rnd(0, 4)}px")`
+          // transform: interpolate(
+          //   [x, y],
+          //   (x, y) => `translate3d(${x}px,${y}px,0)`
+          // )
         }}
       >
         <animated.div
           style={{
-            transform: "translate(-1px, -2px) scale(1) rotate(2deg)"
+            transform: `translate(-1px, -2px) scale(1) rotate(${i}deg)`
             // transform: interpolate([rot, scale], trans)
             // transform: "perspective(1500px) rotateX(30deg) rotateY(- 0.004deg) rotateZ(-0.04deg) scale(1.1)"
           }}
