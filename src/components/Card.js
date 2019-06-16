@@ -41,7 +41,9 @@ class Card extends React.Component {
       >
         <animated.div
           style={{
-            transform: interpolate([rot, scale], trans)
+            transform: "translate(-1px, -2px) scale(1) rotate(2deg)"
+            // transform: interpolate([rot, scale], trans)
+            // transform: "perspective(1500px) rotateX(30deg) rotateY(- 0.004deg) rotateZ(-0.04deg) scale(1.1)"
           }}
           className="flex border rounded-lg"
           {...bind(i)}>
