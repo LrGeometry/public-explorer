@@ -41,16 +41,17 @@ class Card extends React.Component {
         key={i}
         style={{
           backgroundColor: "#4fD0e9",
-          transform: `translate3d("${rnd(0, 4)}px", "${rnd(-10, -20)}px", "${rnd(0, 4)}px")`
-          // transform: interpolate(
-          //   [x, y],
-          //   (x, y) => `translate3d(${x}px,${y}px,0)`
-          // )
+          // transform: `translate3d("${rnd(0, 4)}px", "${rnd(-10, -20)}px", "${rnd(0, 4)}px")`
+          transform: interpolate(
+            [x, y],
+            (x, y) => `translate3d(${x}px,${y}px,0)`
+          )
         }}
       >
         <animated.div
           style={{
-            transform: `translate(-1px, -2px) scale(1) rotate(${i}deg)`
+            transform: `translate(-1px, -2px) scale(1) rotate(0deg)`
+            // transform: `translate(-1px, -2px) scale(1) rotate(${i}deg)`
             // transform: interpolate([rot, scale], trans)
             // transform: "perspective(1500px) rotateX(30deg) rotateY(- 0.004deg) rotateZ(-0.04deg) scale(1.1)"
           }}
