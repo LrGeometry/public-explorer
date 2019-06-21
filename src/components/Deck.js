@@ -3,7 +3,7 @@ import { useSprings } from "react-spring/hooks";
 import { useGesture } from "react-with-gesture";
 
 import Card from "./Card";
-import data from "../data.js";
+import data from "../data";
 
 import "../styles/Deck.css";
 
@@ -18,12 +18,12 @@ const from = i => ({ rot: 0, scale: 1.5, y: -1000 });
 
 const trans = (r, s) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r /
-  10}deg) rotateZ(${r}deg) scale(${s})`;
+    10}deg) rotateZ(${r}deg) scale(${s})`;
 
 function Deck() {
   const [gone] = useState(() => new Set());
 
-  const [props, set] = useSprings(data.length, i => ({
+  let [props, set] = useSprings(data.length, i => ({
     ...to(i),
     from: from(i)
   }));
@@ -71,8 +71,8 @@ function Deck() {
       i={i}
       x={x}
       y={y}
-      rot={rot}
-      scale={scale}
+      // rot={rot}
+      // scale={scale}
       trans={trans}
       data={data}
       bind={bind}
