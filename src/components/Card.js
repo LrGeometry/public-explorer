@@ -42,10 +42,6 @@ const InnerComp = ({ data1, data2 }) => {
   );
 };
 
-// function rnd(min, max) {
-//   return Math.floor(Math.random() * (max - min + 1) + min);
-// }
-
 class Card extends React.Component {
   render() {
     const {

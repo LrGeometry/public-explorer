@@ -1,9 +1,7 @@
 export default [
   {
-    // datan: {
     ediT: "QmZ9eXgSAg488MsQZWS9VTXxcXVYZWDQGDAdzLkQBoBZiF",
-    // },
-    // header: {
+    ipfsHash: "QmQXi1aBcckhXhR2cwJaAdfYYvXdU5utSTr2Hm52rvJjNQ",
     assetID: "-Le5t3_RHWupwXDMI_ws",
     dTime: "Tue May 14 2019",
     factomEntry:
@@ -13,14 +11,10 @@ export default [
     price: 0,
     txSide: "Originator",
     chain: "75f64cadea9372de48933ea299e4f3f74cacb62c88a15369abe150f5f93084e8"
-    // }
   },
   {
-    // datan: {
     ediT: "QmPTkLTE7rJpRtoTHeEdUBuhZijhwhZwiwBbozpCryBjrd",
     ipfsHash: "QmQXi1aBcckhXhR2cwJaAdfYYvXdU5utSTr2Hm52rvJjNQ",
-    //  },
-    // header: {
     assetID: "-Le5t3_RHWupwXDMI_ws",
     dTime: "Tue May 14 2019",
     factomEntry:
@@ -30,6 +24,5 @@ export default [
     name: "test6",
     price: 0,
     txSide: "Originator"
-    // }
   }
 ];
