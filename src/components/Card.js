@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { animated, interpolate } from "react-spring/hooks";
 // import Carousel from "nuka-carousel";
+// import SVG from "./svg";
+import pic from "../assets/copy-regular.svg";
 
 const InnerComp = ({ data1, data2 }) => {
   function copyToClipboard(data) {
@@ -29,9 +31,17 @@ const InnerComp = ({ data1, data2 }) => {
 
           <div className="flex flex1 jc no-space">
             <a href="/#" onClick={() => copyToClipboard(data2)}>
+              {/* <SVG /> */}
+              {/* <i
+                className="fas fa-copy"
+                style={{
+                  color: "red"
+                }}
+              /> */}
               <img
                 style={{ height: "12px" }}
-                src="https://via.placeholder.com/150"
+                src={pic}
+                // src="https://via.placeholder.com/150"
                 alt="testo"
               />
             </a>
@@ -88,7 +98,16 @@ class Card extends React.Component {
             </div>
 
             <div className="d-flex align-items-center flex1 align-self-center">
-              <button type="button" className="btn btn-warning">
+              <button
+                type="button"
+                className="btn btn-warning"
+                onClick={() =>
+                  window.open(
+                    `https://explorer.factom.com/chains/${chain}`,
+                    "_blank"
+                  )
+                }
+              >
                 View factom chain
               </button>
             </div>
