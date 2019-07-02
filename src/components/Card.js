@@ -4,6 +4,38 @@ import { animated, interpolate } from "react-spring/hooks";
 // import Carousel from "nuka-carousel";
 // import SVG from "./svg";
 import pic from "../assets/copy-regular.svg";
+import camera from "../assets/camera-solid.svg";
+import circle from "../assets/circle-solid.svg";
+import file from "../assets/file-alt-solid.svg";
+import info from "../assets/info-circle-solid.svg";
+import photos from "../assets/photos.svg";
+
+const InnerContent = ({ picVal }) => (
+  <div className="d-flex flex-row" style={{ backgroundColor: "#E6E5F5" }}>
+    <div className="flex1  justify-content-center  align-items-center">
+      <img style={{ height: "12px" }} src={picVal} />
+    </div>
+    <div className="d-flex flex4 justify-content-center align-items-center">
+      <div className="justify-content-center">
+        <p className="small-text no-space">ghgffgfffgfgf </p>
+      </div>
+      <div>
+        <img className="ml-2" style={{ height: "12px" }} src={pic} />
+      </div>
+    </div>
+  </div>
+);
+
+const UpText = ({ left, right }) => (
+  <div className="d-flex flex-row ">
+    <span className="col-md-4 no-space">
+      <p className="small-text no-space"> {left}: </p>
+    </span>
+    <span className="col-md-7 no-space ">
+      <p className="small-text bold no-space"> {right} </p>
+    </span>
+  </div>
+);
 
 const InnerComp = ({ data1, data2 }) => {
   function copyToClipboard(data) {
@@ -84,20 +116,128 @@ class Card extends React.Component {
             // transform: interpolate([rot, scale], trans)
             // transform: "perspective(1500px) rotateX(30deg) rotateY(- 0.004deg) rotateZ(-0.04deg) scale(1.1)"
           }}
-          className="flex border rounded-lg"
+          className="flex flex1 border rounded-lg flex-column no-gutters no-space"
           {...bind(i)}
+          style={{
+            margin: 0,
+            padding: 0
+          }}
         >
-          <div className="d-flex flex-column  ml-3 mr-3 mt-2 mb-5 flex flex1">
-            <div className="d-flex flex-column flex5">
-              <InnerComp data1="created" data2={dTime} />
-              <InnerComp data1="factom chain" data2={chain} />
-              <InnerComp data1="factom entry" data2={factomEntry} />
-              <InnerComp data1="core-properties" data2={ipfsHash} />
-              <InnerComp data1="edit IPFS" data2={ediT} />
-              <InnerComp data1="price" data2={price} />
+          <div
+            className="col-md-12 col-sm-12 no-space d-flex flex1 flex-column"
+            style={
+              {
+                // backgroundColor: "green"
+                // height: "10%"
+                // width: ""
+              }
+            }
+          >
+            <div
+              className="d-flex flex1"
+              style={{
+                // paddingTop: "50%",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "10%",
+                width: "100%",
+                backgroundColor: "#01033C"
+              }}
+            >
+              <p
+                className="no-space"
+                style={{
+                  textAlign: "center",
+                  color: "#FFFFFF"
+                }}
+              >
+                Tracking Asset: XXXXXX{" "}
+              </p>
             </div>
 
-            <div className="d-flex align-items-center flex1 align-self-center">
+            <div
+              className=" ml-3 mr-3 d-flex flex7 flex-column"
+              style={{
+                // backgroundColor: "red"
+                backgroundColor: "#FFFEFF"
+              }}
+            >
+              <div className="d-flex flex-column flex1 mt-1">
+                <UpText left="Touchpoint" right="ORCHARD" />
+                <UpText left="Date" right="July 10, 2019" />
+                <UpText left="Time" right="07:26:54" />
+              </div>
+
+              <div
+                className=" d-flex flex-column flex5 mt-4"
+                style={{
+                  backgroundColor: "#E4E4FA",
+                  // height: "100px",
+                  border: "3px solid ",
+                  borderColor: "yellow",
+                  marginBottom: "10px"
+                }}
+              >
+                <div
+                  className="ml-2 mt-2"
+                  onClick={() =>
+                    window.open(
+                      `https://explorer.factom.com/chains/${chain}`,
+                      "_blank"
+                    )
+                  }
+                >
+                  <p className="fs-14"> click to view photo </p>
+                </div>
+                <div className="flex1 justify-content-center align-items-center">
+                  <img style={{ height: "70px" }} src={photos} />
+                </div>
+              </div>
+
+              <div
+                style={{
+                  backgroundColor: "#F4F1FC"
+                }}
+                className="d-flex flex6 flex-column "
+              >
+                <div>
+                  <p className="small-text no-space"> Copy IPFS HASH </p>
+                </div>
+                <div
+                  className="d-flex  flex1 flex-column justify-content-center "
+                  style={{ marginBottom: "5%" }}
+                >
+                  <div className="mt-1">
+                    <InnerContent picVal={camera} />
+                  </div>
+                  <div className="mt-1">
+                    <InnerContent picVal={info} />
+                  </div>
+                  <div className="mt-1">
+                    <InnerContent picVal={circle} />
+                  </div>
+                  <div className="mt-1">
+                    <InnerContent picVal={file} />
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex mt-2 mb-2 flex1 align-items-center  align-self-center">
+                <button
+                  type="button"
+                  className="btn btn-warning"
+                  onClick={() =>
+                    window.open(
+                      `https://explorer.factom.com/chains/${chain}`,
+                      "_blank"
+                    )
+                  }
+                >
+                  View factom chain
+                </button>
+              </div>
+            </div>
+
+            {/* <div className="d-flex flex1 align-items-center  align-self-center">
               <button
                 type="button"
                 className="btn btn-warning"
@@ -110,6 +250,27 @@ class Card extends React.Component {
               >
                 View factom chain
               </button>
+            </div> */}
+            <div
+              className="d-flex flex1"
+              style={{
+                // paddingTop: "50%",
+                justifyContent: "center",
+                alignItems: "center",
+                // height: "10%",
+                width: "100%",
+                backgroundColor: "#01033C"
+              }}
+            >
+              <p
+                className="no-space"
+                style={{
+                  textAlign: "center",
+                  color: "#FFFFFF"
+                }}
+              >
+                0.00057 HERC = 0.000001655 USD
+              </p>
             </div>
           </div>
         </animated.div>

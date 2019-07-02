@@ -11,6 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.bold{
+  font-weight: 800
+}
+
+.fs-14{
+  font-size: 14px
+}
+
+.small-text {
+  font-size: 11px
+}
 
 .flex1 {
   flex: 1;
@@ -30,6 +41,14 @@ code {
 
 .flex5 {
   flex: 5
+}
+
+.flex6 {
+  flex: 6
+}
+
+.flex7 {
+  flex: 7
 }
 
 .flex{

@@ -32,6 +32,14 @@ flex5 {
   flex: 5
 }
 
+flex6 {
+  flex: 6
+}
+
 flex{
   display: flex
+}
+.no-space{
+  margin: 0;
+  padding: 0;
 }
