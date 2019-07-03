@@ -86,9 +86,6 @@ class Card extends React.Component {
           }}
           className="flex border rounded-lg flex-column no-gutters"
           {...bind(i)}
-          // style={{
-          //   backgroundColor: "blue"
-          // }}
         >
           <div className="d-flex flex-column  mt-2 mb-5 flex flex1 no-gutters">
             <div style={{ backgroundColor: "red", flexDirection: "row" }}>

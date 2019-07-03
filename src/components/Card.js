@@ -9,30 +9,40 @@ import circle from "../assets/circle-solid.svg";
 import file from "../assets/file-alt-solid.svg";
 import info from "../assets/info-circle-solid.svg";
 import photos from "../assets/photos.svg";
+import herc from "../assets/herc_flat.png";
 
-const InnerContent = ({ picVal }) => (
-  <div className="d-flex flex-row" style={{ backgroundColor: "#E6E5F5" }}>
-    <div className="flex1  justify-content-center  align-items-center">
-      <img style={{ height: "12px" }} src={picVal} />
-    </div>
-    <div className="d-flex flex4 justify-content-center align-items-center">
-      <div className="justify-content-center">
-        <p className="small-text no-space">ghgffgfffgfgf </p>
+const InnerContent = ({ picVal, val }) => {
+  let text =
+    val && val.length > 12
+      ? val.substring(0, 10) +
+        "...." +
+        val.substring(val.length - 9, val.length)
+      : val;
+
+  return (
+    <div className="d-flex flex-row" style={{ backgroundColor: "#E6E5F5" }}>
+      <div className="flex1  justify-content-center  align-items-center">
+        <img style={{ height: "12px" }} src={picVal} />
       </div>
-      <div>
-        <img className="ml-2" style={{ height: "12px" }} src={pic} />
+      <div className="d-flex flex4 justify-content-center align-items-center">
+        <div className="justify-content-center">
+          <p className="small-text no-space">{text} </p>
+        </div>
+        <div>
+          <img className="ml-2" style={{ height: "12px" }} src={pic} />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const UpText = ({ left, right }) => (
   <div className="d-flex flex-row ">
     <span className="col-md-4 no-space">
-      <p className="small-text no-space"> {left}: </p>
+      <p className="small-text no-space mt-1"> {left}: </p>
     </span>
     <span className="col-md-7 no-space ">
-      <p className="small-text bold no-space"> {right} </p>
+      <p className="small-text bold no-space mt-1"> {right} </p>
     </span>
   </div>
 );
@@ -200,7 +210,7 @@ class Card extends React.Component {
                 }}
                 className="d-flex flex6 flex-column "
               >
-                <div>
+                <div className="pt-1 ml-2">
                   <p className="small-text no-space"> Copy IPFS HASH </p>
                 </div>
                 <div
@@ -208,16 +218,16 @@ class Card extends React.Component {
                   style={{ marginBottom: "5%" }}
                 >
                   <div className="mt-1">
-                    <InnerContent picVal={camera} />
+                    <InnerContent picVal={camera} val={chain} />
                   </div>
                   <div className="mt-1">
-                    <InnerContent picVal={info} />
+                    <InnerContent picVal={info} val={factomEntry} />
                   </div>
                   <div className="mt-1">
-                    <InnerContent picVal={circle} />
+                    <InnerContent picVal={circle} val={ediT} />
                   </div>
                   <div className="mt-1">
-                    <InnerContent picVal={file} />
+                    <InnerContent picVal={file} val={ipfsHash} />
                   </div>
                 </div>
               </div>
@@ -254,23 +264,33 @@ class Card extends React.Component {
             <div
               className="d-flex flex1"
               style={{
-                // paddingTop: "50%",
                 justifyContent: "center",
                 alignItems: "center",
-                // height: "10%",
                 width: "100%",
                 backgroundColor: "#01033C"
               }}
             >
-              <p
-                className="no-space"
-                style={{
-                  textAlign: "center",
-                  color: "#FFFFFF"
-                }}
-              >
-                0.00057 HERC = 0.000001655 USD
-              </p>
+              <div className="ml-2 flex1">
+                <img
+                  src={herc}
+                  alt="herc-pics"
+                  style={{
+                    height: "20px",
+                    width: "40px"
+                  }}
+                />
+              </div>
+              <div class="ml-1 flex6">
+                <p
+                  className="no-space fs-12 "
+                  style={{
+                    textAlign: "center",
+                    color: "#FFFFFF"
+                  }}
+                >
+                  0.00057 HERC = 0.000001655 USD
+                </p>
+              </div>
             </div>
           </div>
         </animated.div>
