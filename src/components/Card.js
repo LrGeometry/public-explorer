@@ -130,8 +130,11 @@ class Card extends React.Component {
           className="flex flex1 border rounded-lg flex-column no-gutters no-space"
           {...bind(i)}
           style={{
-            maxWidth: "350px",
-            height: "630px",
+            display: "flex",
+            flexFlow: "column",
+            maxWidth: "600px",
+            height: "100%",
+            // height: "700px",
             margin: 0,
             padding: 0
           }}
