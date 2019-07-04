@@ -10,6 +10,7 @@ import file from "../assets/file-alt-solid.svg";
 import info from "../assets/info-circle-solid.svg";
 import photos from "../assets/photos.svg";
 import herc from "../assets/herc_flat.png";
+import herc2 from "../assets/herc2.png";
 
 const InnerContent = ({ picVal, val }) => {
   let text =
@@ -129,6 +130,8 @@ class Card extends React.Component {
           className="flex flex1 border rounded-lg flex-column no-gutters no-space"
           {...bind(i)}
           style={{
+            maxWidth: "350px",
+            height: "630px",
             margin: 0,
             padding: 0
           }}
@@ -151,7 +154,7 @@ class Card extends React.Component {
                 alignItems: "center",
                 height: "10%",
                 width: "100%",
-                backgroundColor: "#01033C"
+                backgroundColor: "#131440"
               }}
             >
               <p
@@ -267,15 +270,15 @@ class Card extends React.Component {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
-                backgroundColor: "#01033C"
+                backgroundColor: "#131440"
               }}
             >
-              <div className="ml-2 flex1">
+              <div className="ml-1 ">
                 <img
-                  src={herc}
+                  src={herc2}
                   alt="herc-pics"
                   style={{
-                    height: "20px",
+                    height: "40px",
                     width: "40px"
                   }}
                 />
