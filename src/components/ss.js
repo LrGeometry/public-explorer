@@ -105,12 +105,11 @@ class Card extends React.Component {
       bind,
       data
     } = this.props;
-    console.log("sdksjd", data);
     const { ipfsHash, factomEntry, dTime, ediT, chain, price } = data[i];
 
     return (
       <animated.div
-        className="flex flex1"
+        className="flex flex1 col-sm-12"
         key={i}
         style={{
           backgroundColor: "#4fD0e9",
@@ -128,12 +127,16 @@ class Card extends React.Component {
             // transform: interpolate([rot, scale], trans)
             // transform: "perspective(1500px) rotateX(30deg) rotateY(- 0.004deg) rotateZ(-0.04deg) scale(1.1)"
           }}
-          className="flex flex1 border rounded-lg flex-column no-gutters no-space"
+          className="flex flex1 border rounded-lg flex-column no-gutters no-space col-sm-12 col-md-12"
           {...bind(i)}
           style={{
-            maxWidth: "350px",
-            height: "630px",
+            // display: "flex",
+            // flexFlow: "column",
+            // maxWidth: "600px",
+            // height: "100%",
+            // height: "700px",
             margin: 0,
+            border: "10px",
             padding: 0
           }}
         >
