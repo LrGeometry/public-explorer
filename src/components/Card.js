@@ -101,12 +101,27 @@ class Card extends React.Component {
       i,
       x,
       y,
+      newData,
+
+      Name,
+      chainId,
+      ipfsHash,
+      transactions,
       //  rot, scale, trans,
       bind,
       data
     } = this.props;
-    console.log("sdksjd", data);
-    const { ipfsHash, factomEntry, dTime, ediT, chain, price } = data[i];
+
+    const { factomEntry, dTime, ediT, chain, price } = data[i];
+    // console.log("kdks", newData);
+    // const Name = newData[i] && newData[i].Name;
+
+    //  timestamp, data: nedata, header = transactions[Math.random()];
+
+    // const transactions = newData[i] && newData[i].transactions;
+    console.log("kk", i);
+    // const { Name, hercId, Logo, hashes, transactions } = newData[i];
+    // console.log("transactions", transactions);
 
     return (
       <animated.div
@@ -177,7 +192,7 @@ class Card extends React.Component {
               }}
             >
               <div className="d-flex flex-column flex1 mt-1">
-                <UpText left="Touchpoint" right="ORCHARD" />
+                <UpText left="Touchpoint" right={Name} />
                 <UpText left="Date" right="July 10, 2019" />
                 <UpText left="Time" right="07:26:54" />
               </div>
@@ -222,7 +237,7 @@ class Card extends React.Component {
                   style={{ marginBottom: "5%" }}
                 >
                   <div className="mt-1">
-                    <InnerContent picVal={camera} val={chain} />
+                    <InnerContent picVal={camera} val={chainId} />
                   </div>
                   <div className="mt-1">
                     <InnerContent picVal={info} val={factomEntry} />

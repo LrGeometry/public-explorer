@@ -28,7 +28,7 @@ function Deck() {
   const [value, setValue] = useState([]);
 
   useEffect(() => {
-    var paramFromURL = "364";
+    var paramFromURL = 364;
     const rootRef = firebase.database().ref();
     rootRef
       .child("assets")
@@ -39,9 +39,7 @@ function Deck() {
         let storedValue = [];
         snapshot.forEach(asset => {
           const assset = asset.toJSON();
-          // console.log("skfkdkf", assset);
-          storedValue.push(assset);
-          // console.log("assets here", asset);
+          storedValue.push(asset.toJSON());
           if (asset.toJSON().hercId === paramFromURL) {
             // check if asset has any transaction history
             if (asset.toJSON().transactions) {
@@ -54,14 +52,17 @@ function Deck() {
             // return "no asset matched given hercId"
           }
         });
+        console.log("storedvalue", storedValue);
         setValue(storedValue);
       });
-  });
+  }, []);
 
-  let [props, set] = useSprings(data.length, i => ({
+  let [props, set] = useSprings(10, i => ({
     ...to(i),
     from: from(i)
   }));
+
+  console.log("dfkkdfkd--props.length", props.length);
 
   const bind = useGesture(
     ({
@@ -101,7 +102,6 @@ function Deck() {
         setTimeout(() => gone.clear() || set(i => to(i)), 600);
     }
   );
-  // console.log("yap", value);
 
   if (loading) {
     return (
@@ -116,28 +116,45 @@ function Deck() {
     );
   }
 
-  // return value.splice(60).map((c, i) => (
-  //   <Card
-  //     i={i}
-  //     x={props.map(({ x, y, rot, scale }, ii) => {
-  //       return x[ii];
-  //     })}
-  //     y={props.map(({ x, y, rot, scale }, ii) => {
-  //       return y[ii];
-  //     })}
-  //     // rot={rot}
-  //     // scale={scale}
-  //     trans={trans}
-  //     data={data}
-  //     bind={bind}
-  //   />
-  // ));
+  // return value.splice(55).map((c, i) => {
+  //   return (
+  //     <Card
+  //       i={i}
+  //       // x={props[0].x}
+  //       // y={props[0].y}
+  //       // rot={rot}
+  //       // scale={scale}
+  //       trans={trans}
+  //       data={data}
+  //       bind={bind}
+  //     />
+  //   );
+  // });
+  else {
+    const bb = value.splice(10);
 
-  return props.map(({ x, y, rot, scale }, i) => {
-    console.log("value of i", i);
-    console.log("value of x", x);
-    console.log("value of y", y);
-    return (
+    console.log("julie", bb && bb[6] && bb[6].transactions);
+    const transact = [];
+
+    if (bb && bb[6] && bb[6].transactions !== undefined) {
+      let v = Object.keys(bb && bb[6] && bb[6].transactions).forEach(key => {
+        console.log("fjdfj", key);
+        // console.log('djfjjdpp',a);
+
+        let value = bb && bb[6] && bb[6].transactions[key];
+        value.timestamp = key;
+        transact.push(value);
+        return value;
+        // console.log('lldll', value)
+        //use key and value here
+      });
+    }
+
+    // }
+
+    console.log("transact", transact);
+
+    return props.map(({ x, y, rot, scale }, i) => (
       <Card
         i={i}
         x={x}
@@ -145,12 +162,17 @@ function Deck() {
         // rot={rot}
         // scale={scale}
         trans={trans}
+        Name={value && value[0] && value[0].Name}
+        chainId={value && value[0] && value[0].hashes.chainId}
+        ipfsHash={value && value[0] && value[0].hashes.ipfsHash}
+        transactions={transact}
         data={data}
+        newData={bb}
         bind={bind}
       />
       // )
-    );
-  });
+    ));
+  }
 }
 
 export default Deck;
