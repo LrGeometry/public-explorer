@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import moment from "moment";
 import { animated, interpolate } from "react-spring/hooks";
 // import Carousel from "nuka-carousel";
-// import SVG from "./svg";
-import pic from "../assets/copy-regular.svg";
+
+import InnerComp, { UpText } from "./innerComp";
+import InnerContent from "./innerCont";
+
 import camera from "../assets/camera-solid.svg";
 import circle from "../assets/circle-solid.svg";
 import file from "../assets/file-alt-solid.svg";
@@ -12,102 +15,38 @@ import photos from "../assets/photos.svg";
 import herc from "../assets/herc_flat.png";
 import herc2 from "../assets/herc2.png";
 
-const InnerContent = ({ picVal, val }) => {
-  let text =
-    val && val.length > 12
-      ? val.substring(0, 10) +
-        "...." +
-        val.substring(val.length - 9, val.length)
-      : val;
-
-  return (
-    <div className="d-flex flex-row" style={{ backgroundColor: "#E6E5F5" }}>
-      <div className="flex1  justify-content-center  align-items-center">
-        <img style={{ height: "12px" }} src={picVal} />
-      </div>
-      <div className="d-flex flex4 justify-content-center align-items-center">
-        <div className="justify-content-center">
-          <p className="small-text no-space">{text} </p>
-        </div>
-        <div>
-          <img className="ml-2" style={{ height: "12px" }} src={pic} />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const UpText = ({ left, right }) => (
-  <div className="d-flex flex-row ">
-    <span className="col-md-4 no-space">
-      <p className="small-text no-space mt-1"> {left}: </p>
-    </span>
-    <span className="col-md-7 no-space ">
-      <p className="small-text bold no-space mt-1"> {right} </p>
-    </span>
-  </div>
-);
-
-const InnerComp = ({ data1, data2 }) => {
-  function copyToClipboard(data) {
-    navigator.clipboard.writeText(data).then(() => alert("text copied"));
-  }
-
-  let newData2 =
-    data2 && data2.length > 12
-      ? data2.substring(0, 10) +
-        "...." +
-        data2.substring(data2.length - 9, data2.length)
-      : data2;
-  return (
-    <div className="mt-3 border rounded-lg my-10">
-      <div style={{ backgroundColor: "#e2e6f9", height: "50px" }}>
-        <div className="pl-3 pt-1 no-space">
-          <p className="no-space" style={{ fontSize: 9, color: "#cbccd2" }}>
-            {data1}
-          </p>
-        </div>
-        <div className="d-flex flex-row pl-3 pt-2 flex1 flex-row no-space">
-          <div className="flex flex1 jc">
-            <p style={{ fontSize: 8, color: "#091140" }}>{newData2}</p>
-          </div>
-
-          <div className="flex flex1 jc no-space">
-            <a href="/#" onClick={() => copyToClipboard(data2)}>
-              {/* <SVG /> */}
-              {/* <i
-                className="fas fa-copy"
-                style={{
-                  color: "red"
-                }}
-              /> */}
-              <img
-                style={{ height: "12px" }}
-                src={pic}
-                // src="https://via.placeholder.com/150"
-                alt="testo"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 class Card extends React.Component {
   render() {
     const {
       i,
       x,
       y,
+      newData,
+
+      Name,
+      chainId,
+      ipfsHash,
+      transactions,
       //  rot, scale, trans,
       bind,
       data
     } = this.props;
-    console.log("sdksjd", data);
-    const { ipfsHash, factomEntry, dTime, ediT, chain, price } = data[i];
 
+    const { factomEntry, dTime, chain, price } = data[i];
+
+    const header = transactions && transactions[0] && transactions[0].header;
+    const dat = transactions && transactions[0] && transactions[0].data;
+    const ediT =
+      transactions &&
+      transactions[0] &&
+      transactions[0].data &&
+      transactions[0].ediT;
+    const timestamp =
+      transactions && transactions[0] && transactions[0].timestamp;
+
+    console.log("kkdkf---dat", dat);
+
+    // console.log("kkskd====header", header);
     return (
       <animated.div
         className="flex flex1"
@@ -131,8 +70,13 @@ class Card extends React.Component {
           className="flex flex1 border rounded-lg flex-column no-gutters no-space"
           {...bind(i)}
           style={{
-            maxWidth: "350px",
-            height: "630px",
+            // maxWidth: "350px",
+            // height: "630px",
+
+            // display: "flex",
+            // flexFlow: "column",
+            // maxWidth: "600px",
+            // height: "100%",
             margin: 0,
             padding: 0
           }}
@@ -177,9 +121,9 @@ class Card extends React.Component {
               }}
             >
               <div className="d-flex flex-column flex1 mt-1">
-                <UpText left="Touchpoint" right="ORCHARD" />
-                <UpText left="Date" right="July 10, 2019" />
-                <UpText left="Time" right="07:26:54" />
+                <UpText left="Touchpoint" right={Name} />
+                <UpText left="Date" right={header && header.dTime} />
+                <UpText left="Time" right={moment().format("LTS")} />
               </div>
 
               <div
@@ -221,15 +165,23 @@ class Card extends React.Component {
                   className="d-flex  flex1 flex-column justify-content-center "
                   style={{ marginBottom: "5%" }}
                 >
+                  {/*  */}
                   <div className="mt-1">
-                    <InnerContent picVal={camera} val={chain} />
+                    <InnerContent picVal={camera} val={chainId} />
                   </div>
+                  {/*  */}
                   <div className="mt-1">
-                    <InnerContent picVal={info} val={factomEntry} />
+                    <InnerContent
+                      picVal={info}
+                      val={header && header.factomEntry}
+                    />
                   </div>
+                  {/*  */}
                   <div className="mt-1">
-                    <InnerContent picVal={circle} val={ediT} />
+                    <InnerContent picVal={circle} val={dat && dat.ediT} />
                   </div>
+
+                  {/* /done */}
                   <div className="mt-1">
                     <InnerContent picVal={file} val={ipfsHash} />
                   </div>
