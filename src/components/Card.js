@@ -27,7 +27,9 @@ class Card extends React.Component {
       chainId,
       ipfsHash,
       transactions,
-      //  rot, scale, trans,
+      rot,
+      scale,
+      trans,
       bind,
       data
     } = this.props;
@@ -59,10 +61,12 @@ class Card extends React.Component {
       >
         <animated.div
           style={{
-            transform: `translate(-1px, -2px) scale(1) rotate(0deg)`
+            // transform: `translate(-1px, -2px) scale(1) rotate(0deg)`
             // transform: `translate(-1px, -2px) scale(1) rotate(${i}deg)`
             // transform: interpolate([rot, scale], trans)
-            // transform: "perspective(1500px) rotateX(30deg) rotateY(- 0.004deg) rotateZ(-0.04deg) scale(1.1)"
+            transform: interpolate([rot, scale], trans)
+            // transform:
+            //   "perspective(1500px) rotateX(30deg) rotateY(- 0.004deg) rotateZ(-0.04deg) scale(1.1)"
           }}
           className="flex flex1 border rounded-lg flex-column no-gutters no-space"
           {...bind(i)}
@@ -78,16 +82,7 @@ class Card extends React.Component {
             padding: 0
           }}
         >
-          <div
-            className="col-md-12 col-sm-12 no-space d-flex flex1 flex-column"
-            style={
-              {
-                // backgroundColor: "green"
-                // height: "10%"
-                // width: ""
-              }
-            }
-          >
+          <div className="col-md-12 col-sm-12 no-space d-flex flex1 flex-column">
             <div
               className="d-flex flex1"
               style={{

@@ -9,6 +9,7 @@ import Card from "./Card";
 import data from "../data";
 
 import "../styles/Deck.css";
+import "../styles/DeckMobile.css";
 
 const to = i => ({
   x: 0,
@@ -22,6 +23,8 @@ const from = i => ({ rot: 0, scale: 1.5, y: -1000 });
 const trans = (r, s) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r /
     10}deg) rotateZ(${r}deg) scale(${s})`;
+
+// These two are just helpers, they curate spring data, values that are later being interpolated into css
 
 function Deck() {
   const [gone] = useState(() => new Set());
@@ -134,8 +137,8 @@ function Deck() {
         i={i}
         x={x}
         y={y}
-        // rot={rot}
-        // scale={scale}
+        rot={rot}
+        scale={scale}
         trans={trans}
         data={data}
         bind={bind}
