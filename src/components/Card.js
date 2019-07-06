@@ -44,9 +44,6 @@ class Card extends React.Component {
     const timestamp =
       transactions && transactions[0] && transactions[0].timestamp;
 
-    console.log("kkdkf---dat", dat);
-
-    // console.log("kkskd====header", header);
     return (
       <animated.div
         className="flex flex1"
@@ -236,7 +233,7 @@ class Card extends React.Component {
                   }}
                 />
               </div>
-              <div class="ml-1 flex6">
+              <div className="ml-1 flex6">
                 <p
                   className="no-space fs-12 "
                   style={{
