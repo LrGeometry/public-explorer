@@ -49,7 +49,7 @@ class Card extends React.Component {
     // console.log("kkskd====header", header);
     return (
       <animated.div
-        className="flex flex1"
+        className="flex flex1 justify-content-center"
         key={i}
         style={{
           backgroundColor: "#4fD0e9",
@@ -72,11 +72,6 @@ class Card extends React.Component {
           style={{
             // maxWidth: "350px",
             // height: "630px",
-
-            // display: "flex",
-            // flexFlow: "column",
-            // maxWidth: "600px",
-            // height: "100%",
             margin: 0,
             padding: 0
           }}
