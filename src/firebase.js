@@ -8,7 +8,6 @@ const {
   REACT_APP_messagingSenderId: messagingSenderId
 } = process.env;
 
-console.log("sjsjd", apiKey);
 const config = {
   apiKey,
   authDomain,
