@@ -58,8 +58,6 @@ body {
      height: 90%;
     max-height: 90%;
 
-    /* height: 550px;
-    max-height: 570px; */
     will-change: transform;
     border-radius: 50px;
     box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4),

@@ -39,19 +39,7 @@ const InnerComp = ({ data1, data2 }) => {
 
           <div className="flex flex1 jc no-space">
             <a href="/#" onClick={() => copyToClipboard(data2)}>
-              {/* <SVG /> */}
-              {/* <i
-                className="fas fa-copy"
-                style={{
-                  color: "red"
-                }}
-              /> */}
-              <img
-                style={{ height: "12px" }}
-                src={pic}
-                // src="https://via.placeholder.com/150"
-                alt="testo"
-              />
+              <img style={{ height: "12px" }} src={pic} alt="testo" />
             </a>
           </div>
         </div>

@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { animated, interpolate } from "react-spring/hooks";
-// import Carousel from "nuka-carousel";
 
 import InnerComp, { UpText } from "./innerComp";
 import InnerContent from "./innerCont";
@@ -22,7 +21,6 @@ class Card extends React.Component {
       x,
       y,
       newData,
-
       Name,
       chainId,
       ipfsHash,
@@ -52,7 +50,6 @@ class Card extends React.Component {
         key={i}
         style={{
           backgroundColor: "#4fD0e9",
-          // transform: `translate3d("${rnd(0, 4)}px", "${rnd(-10, -20)}px", "${rnd(0, 4)}px")`
           transform: interpolate(
             [x, y],
             (x, y) => `translate3d(${x}px,${y}px,0)`
@@ -61,23 +58,11 @@ class Card extends React.Component {
       >
         <animated.div
           style={{
-            // transform: `translate(-1px, -2px) scale(1) rotate(0deg)`
-            // transform: `translate(-1px, -2px) scale(1) rotate(${i}deg)`
-            // transform: interpolate([rot, scale], trans)
             transform: interpolate([rot, scale], trans)
-            // transform:
-            //   "perspective(1500px) rotateX(30deg) rotateY(- 0.004deg) rotateZ(-0.04deg) scale(1.1)"
           }}
           className="flex flex1 border rounded-lg flex-column no-gutters no-space"
           {...bind(i)}
           style={{
-            // maxWidth: "350px",
-            // height: "630px",
-
-            // display: "flex",
-            // flexFlow: "column",
-            // maxWidth: "600px",
-            // height: "100%",
             margin: 0,
             padding: 0
           }}
@@ -86,7 +71,6 @@ class Card extends React.Component {
             <div
               className="d-flex flex1"
               style={{
-                // paddingTop: "50%",
                 justifyContent: "center",
                 alignItems: "center",
                 height: "10%",
@@ -108,7 +92,6 @@ class Card extends React.Component {
             <div
               className=" ml-3 mr-3 d-flex flex7 flex-column"
               style={{
-                // backgroundColor: "red"
                 backgroundColor: "#FFFEFF"
               }}
             >
@@ -157,23 +140,21 @@ class Card extends React.Component {
                   className="d-flex  flex1 flex-column justify-content-center "
                   style={{ marginBottom: "5%" }}
                 >
-                  {/*  */}
                   <div className="mt-1">
                     <InnerContent picVal={camera} val={chainId} />
                   </div>
-                  {/*  */}
+
                   <div className="mt-1">
                     <InnerContent
                       picVal={info}
                       val={header && header.factomEntry}
                     />
                   </div>
-                  {/*  */}
+
                   <div className="mt-1">
                     <InnerContent picVal={circle} val={dat && dat.ediT} />
                   </div>
 
-                  {/* /done */}
                   <div className="mt-1">
                     <InnerContent picVal={file} val={ipfsHash} />
                   </div>
@@ -195,20 +176,6 @@ class Card extends React.Component {
               </div>
             </div>
 
-            {/* <div className="d-flex flex1 align-items-center  align-self-center">
-              <button
-                type="button"
-                className="btn btn-warning"
-                onClick={() =>
-                  window.open(
-                    `https://explorer.factom.com/chains/${chain}`,
-                    "_blank"
-                  )
-                }
-              >
-                View factom chain
-              </button>
-            </div> */}
             <div
               className="d-flex flex1"
               style={{
