@@ -9,7 +9,6 @@ import Card from "./Card";
 import data from "../data";
 
 import "../styles/Deck.css";
-import "../styles/DeckMobile.css";
 
 const to = i => ({
   x: 0,
@@ -23,8 +22,6 @@ const from = i => ({ rot: 0, scale: 1.5, y: -1000 });
 const trans = (r, s) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r /
     10}deg) rotateZ(${r}deg) scale(${s})`;
-
-// These two are just helpers, they curate spring data, values that are later being interpolated into css
 
 function Deck() {
   const [gone] = useState(() => new Set());
@@ -43,7 +40,6 @@ function Deck() {
         let storedValue = [];
         snapshot.forEach(asset => {
           const assset = asset.toJSON();
-          // console.log("lfkdf", assset);
 
           storedValue.push(asset.toJSON());
 
@@ -140,15 +136,13 @@ function Deck() {
         rot={rot}
         scale={scale}
         trans={trans}
+        transactions={transact}
         data={data}
         bind={bind}
         Name={info && info.Name}
         chainId={info && info.hashes && info.hashes.chainId}
         ipfsHash={info && info.hashes && info.hashes.ipfsHash}
-        transactions={transact}
-        // data={data}
         newData={bb}
-        // bind={bind}
       />
     ));
   }
