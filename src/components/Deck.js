@@ -108,16 +108,19 @@ function Deck() {
   );
 
   const renderCards = () => {
+    console.log("value", value.length);
     const bb = value.splice(10);
+    console.log("bbb", bb);
     const transact = [];
     if (bb && bb[6] && bb[6].transactions !== undefined) {
-      let v = Object.keys(bb && bb[6] && bb[6].transactions).forEach(key => {
+      Object.keys(bb && bb[6] && bb[6].transactions).forEach(key => {
         let value = bb && bb[6] && bb[6].transactions[key];
         value.timestamp = key;
         transact.push(value);
         return value;
       });
     }
+    console.log("hdhfd", bb);
     return props.map(({ x, y, rot, scale }, i) => (
       <Card
         i={i}
@@ -126,15 +129,13 @@ function Deck() {
         rot={rot}
         scale={scale}
         trans={trans}
-        // transactions={transact}
-        transactions={[]}
+        transactions={transact}
         data={data}
         bind={bind}
         Name={info && info.Name}
         chainId={info && info.hashes && info.hashes.chainId}
         ipfsHash={info && info.hashes && info.hashes.ipfsHash}
-        // newData={bb}
-        newData={value.splice(10)}
+        newData={bb}
       />
     ));
   };
@@ -150,24 +151,12 @@ function Deck() {
       </div>
     );
   } else {
-    const bb = value.splice(10);
-    const transact = [];
-    if (bb && bb[6] && bb[6].transactions !== undefined) {
-      let v = Object.keys(bb && bb[6] && bb[6].transactions).forEach(key => {
-        let value = bb && bb[6] && bb[6].transactions[key];
-        value.timestamp = key;
-        transact.push(value);
-        return value;
-      });
-    }
-
     return (
       <Fragment>
         <Header />
         <Fragment>{renderCards()}</Fragment>
       </Fragment>
     );
-    // </div>
   }
 }
 
