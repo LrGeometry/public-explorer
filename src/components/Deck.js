@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { useSprings } from "react-spring/hooks";
 import { useGesture } from "react-with-gesture";
 
@@ -6,6 +6,8 @@ import firebase from "../firebase.js";
 import Spinner from "react-spinner-material";
 
 import Card from "./Card";
+import Header from "./Header";
+
 import data from "../data";
 
 import "../styles/Deck.css";
@@ -105,6 +107,37 @@ function Deck() {
     }
   );
 
+  const renderCards = () => {
+    const bb = value.splice(10);
+    const transact = [];
+    if (bb && bb[6] && bb[6].transactions !== undefined) {
+      let v = Object.keys(bb && bb[6] && bb[6].transactions).forEach(key => {
+        let value = bb && bb[6] && bb[6].transactions[key];
+        value.timestamp = key;
+        transact.push(value);
+        return value;
+      });
+    }
+    return props.map(({ x, y, rot, scale }, i) => (
+      <Card
+        i={i}
+        x={x}
+        y={y}
+        rot={rot}
+        scale={scale}
+        trans={trans}
+        // transactions={transact}
+        transactions={[]}
+        data={data}
+        bind={bind}
+        Name={info && info.Name}
+        chainId={info && info.hashes && info.hashes.chainId}
+        ipfsHash={info && info.hashes && info.hashes.ipfsHash}
+        // newData={bb}
+        newData={value.splice(10)}
+      />
+    ));
+  };
   if (loading) {
     return (
       <div>
@@ -128,23 +161,13 @@ function Deck() {
       });
     }
 
-    return props.map(({ x, y, rot, scale }, i) => (
-      <Card
-        i={i}
-        x={x}
-        y={y}
-        rot={rot}
-        scale={scale}
-        trans={trans}
-        transactions={transact}
-        data={data}
-        bind={bind}
-        Name={info && info.Name}
-        chainId={info && info.hashes && info.hashes.chainId}
-        ipfsHash={info && info.hashes && info.hashes.ipfsHash}
-        newData={bb}
-      />
-    ));
+    return (
+      <Fragment>
+        <Header />
+        <Fragment>{renderCards()}</Fragment>
+      </Fragment>
+    );
+    // </div>
   }
 }
 
