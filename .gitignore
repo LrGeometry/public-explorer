@@ -9,9 +9,11 @@
 /coverage
 
 # production
-/build
+# /build
 
 .env
+
+/client/node_modules
 
 # misc
 .DS_Store
