@@ -1,12 +1,12 @@
-import React, { useState, Fragment } from "react";
+import React, { useState,useContext, Fragment } from "react";
 import { useSprings } from "react-spring/hooks";
 import { useGesture } from "react-with-gesture";
+import { AppContext } from "../AppContext";
 
-import firebase from "../firebase.js";
-import Spinner from "react-spinner-material";
 
-import Card from "./Card";
-import Header from "./Header";
+import Spinner from "../components/Spinner";
+import Card from "../components/Card";
+import Header from "../components/Header";
 
 import data from "../data";
 
@@ -28,40 +28,7 @@ const trans = (r, s) =>
 function Deck() {
   const [gone] = useState(() => new Set());
 
-  const [loading, setLoading] = useState(true);
-  const [value, setValue] = useState([]);
-  const [info, setInfo] = useState({});
-  React.useEffect(() => {
-    var paramFromURL = 364;
-    const rootRef = firebase.database().ref();
-    rootRef
-      .child("assets")
-      .once("value")
-      .then(snapshot => {
-        setLoading(false);
-        let storedValue = [];
-        snapshot.forEach(asset => {
-          const assset = asset.toJSON();
-
-          storedValue.push(asset.toJSON());
-
-          if (asset.toJSON().hercId === paramFromURL) {
-            setInfo(asset.toJSON());
-            // check if asset has any transaction history
-            if (asset.toJSON().transactions) {
-              // return an iterable list of transactions
-            } else {
-              // return ” no transaction history”
-            }
-            // return asset
-          } else {
-            // return “no asset matched given hercId”
-          }
-        });
-
-        setValue(storedValue);
-      });
-  }, []);
+ const {value,loading,info} = useContext(AppContext);
 
   let [props, set] = useSprings(data.length, i => ({
     ...to(i),
@@ -108,9 +75,7 @@ function Deck() {
   );
 
   const renderCards = () => {
-    console.log("value", value.length);
     const bb = value.splice(10);
-    console.log("bbb", bb);
     const transact = [];
     if (bb && bb[6] && bb[6].transactions !== undefined) {
       Object.keys(bb && bb[6] && bb[6].transactions).forEach(key => {
@@ -120,9 +85,9 @@ function Deck() {
         return value;
       });
     }
-    console.log("hdhfd", bb);
     return props.map(({ x, y, rot, scale }, i) => (
       <Card
+        key={i}
         i={i}
         x={x}
         y={y}
@@ -141,14 +106,12 @@ function Deck() {
   };
   if (loading) {
     return (
-      <div>
         <Spinner
           size={120}
           spinnerColor={"#333"}
           spinnerWidth={2}
           visible={true}
         />
-      </div>
     );
   } else {
     return (

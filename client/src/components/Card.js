@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import { animated, interpolate } from "react-spring/hooks";
 
-import { UpText } from "./innerComp";
-import InnerContent from "./innerCont";
+import { UpText } from "./InnerComp";
+import InnerContent from "./InnerCont";
 
 import camera from "../assets/camera-solid.svg";
 import circle from "../assets/circle-solid.svg";
@@ -38,21 +38,25 @@ const Card = ({
   bind,
   data
 }) => {
-  const { factomEntry, dTime, chain, price } = data[i];
+  const { 
+    // factomEntry, dTime, 
+    chain,
+    //  price
+     } = data[i];
 
   const header = transactions && transactions[0] && transactions[0].header;
   const dat = transactions && transactions[0] && transactions[0].data;
-  const ediT =
-    transactions &&
-    transactions[0] &&
-    transactions[0].data &&
-    transactions[0].ediT;
-  const timestamp =
-    transactions && transactions[0] && transactions[0].timestamp;
+  // const ediT =
+  //   transactions &&
+  //   transactions[0] &&
+  //   transactions[0].data &&
+  //   transactions[0].ediT;
+  // const timestamp =
+  //   transactions && transactions[0] && transactions[0].timestamp;
 
   return (
     <animated.div
-      className="flex flex1"
+      className="flex flex1 root"
       key={i}
       style={{
         backgroundColor: "#4fD0e9",
@@ -61,16 +65,14 @@ const Card = ({
     >
       <animated.div
         style={{
-          transform: interpolate([rot, scale], trans)
-        }}
-        className="flex flex1 border rounded-lg flex-column no-gutters no-space"
-        {...bind(i)}
-        style={{
+          // transform: interpolate([rot, scale], trans),
           margin: -4,
           padding: -4
         }}
+        className="root2 flex flex1 border rounded-lg flex-column no-gutters no-space"
+        {...bind(i)}
+
       >
-        {/* <TwitterIcon size={25} round={true} /> */}
 
         <div className="col-md-12 col-sm-12 no-space d-flex flex1 flex-column">
           <div
@@ -126,7 +128,7 @@ const Card = ({
                 <p className="fs-14"> click to view photo </p>
               </div>
               <div className="flex1 justify-content-center align-items-center">
-                <img style={{ height: "50px" }} src={photos} />
+                <img style={{ height: "50px" }} src={photos} alt="pics" />
               </div>
             </div>
             <div

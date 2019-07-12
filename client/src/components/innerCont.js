@@ -13,14 +13,14 @@ const InnerContent = ({ picVal, val }) => {
   return (
     <div className="d-flex flex-row" style={{ backgroundColor: "#E6E5F5" }}>
       <div className="flex1  justify-content-center  align-items-center">
-        <img style={{ height: "12px" }} src={picVal} />
+        <img style={{ height: "12px" }} src={picVal} alt="pics" />
       </div>
       <div className="d-flex flex4 justify-content-center align-items-center">
         <div className="justify-content-center">
           <p className="small-text no-space">{text} </p>
         </div>
         <div>
-          <img className="ml-2" style={{ height: "12px" }} src={pic} />
+          <img className="ml-2" style={{ height: "12px" }} src={pic} alt="pics" />
         </div>
       </div>
     </div>

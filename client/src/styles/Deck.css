@@ -16,17 +16,17 @@ body {
 }
 
 #root {
-  background: salmon;
+  /* background: salmon; */
   position: fixed;
   overflow: hidden;
   width: 100%;
   height: 100%;
-  cursor: url("https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png")
+   cursor: url("https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png")
       39 39,
     auto;
 }
 
-#root > div {
+.root {
   padding-top: 70px;
   position: absolute;
   width: 100vw;
@@ -37,7 +37,7 @@ body {
   justify-content: center;
 }
 
-#root > div > div {
+.root2 {
   padding: 5px;
   background-color: white;
   background-size: auto 85%;
@@ -55,7 +55,7 @@ body {
 
 
 @media only screen and (max-width:600px) {
-  #root > div {
+  .root {
        margin-top: 5px;
     position: absolute;
     width: 100vw;
@@ -68,7 +68,7 @@ body {
       /* border-radius: 50px; */
   }
 
-  #root > div > div {
+  .root2 {
     margin-top: 5px;
     padding: 5px;
     background-color: white;
