@@ -7,6 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.scroll-controller {
+   overflow: scroll;
+}
 
 .header-col {
   background-color: rgb(19, 20, 64);

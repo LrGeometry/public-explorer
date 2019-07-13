@@ -1,8 +1,9 @@
-import React, { useState,useContext, Fragment } from "react";
+import React, { useState, useContext, Fragment } from "react";
 import { useSprings } from "react-spring/hooks";
 import { useGesture } from "react-with-gesture";
 import { AppContext } from "../AppContext";
 
+import { useFetch2 } from "../utils/useFetch";
 
 import Spinner from "../components/Spinner";
 import Card from "../components/Card";
@@ -28,7 +29,9 @@ const trans = (r, s) =>
 function Deck() {
   const [gone] = useState(() => new Set());
 
- const {value,loading,info} = useContext(AppContext);
+  const { value, loading, info } = useContext(AppContext);
+
+  const hercValue = useFetch2();
 
   let [props, set] = useSprings(data.length, i => ({
     ...to(i),
@@ -91,6 +94,7 @@ function Deck() {
         i={i}
         x={x}
         y={y}
+        herc={hercValue}
         rot={rot}
         scale={scale}
         trans={trans}
@@ -106,12 +110,12 @@ function Deck() {
   };
   if (loading) {
     return (
-        <Spinner
-          size={120}
-          spinnerColor={"#333"}
-          spinnerWidth={2}
-          visible={true}
-        />
+      <Spinner
+        size={120}
+        spinnerColor={"#333"}
+        spinnerWidth={2}
+        visible={true}
+      />
     );
   } else {
     return (

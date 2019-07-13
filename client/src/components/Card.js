@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { animated, interpolate } from "react-spring/hooks";
+import { useFetch2 } from "../utils/useFetch";
 
 import { UpText } from "./InnerComp";
 import InnerContent from "./InnerCont";
@@ -12,6 +13,7 @@ import file from "../assets/file-alt-solid.svg";
 import info from "../assets/info-circle-solid.svg";
 import photos from "../assets/photos.svg";
 
+import herc from "../assets/herc_flat.png";
 import herc2 from "../assets/herc2.png";
 
 import {
@@ -36,13 +38,15 @@ const Card = ({
   scale,
   trans,
   bind,
-  data
+  data,
+  herc
 }) => {
-  const { 
-    // factomEntry, dTime, 
+  console.log("herc value", herc);
+  const {
+    // factomEntry, dTime,
     chain,
-    //  price
-     } = data[i];
+    price
+  } = data[i];
 
   const header = transactions && transactions[0] && transactions[0].header;
   const dat = transactions && transactions[0] && transactions[0].data;
@@ -71,9 +75,7 @@ const Card = ({
         }}
         className="root2 flex flex1 border rounded-lg flex-column no-gutters no-space"
         {...bind(i)}
-
       >
-
         <div className="col-md-12 col-sm-12 no-space d-flex flex1 flex-column">
           <div
             className="d-flex flex1"
@@ -92,7 +94,7 @@ const Card = ({
                 color: "#FFFFFF"
               }}
             >
-              Tracking Asset: XXXXXX{" "}
+              Tracking Asset: {Name}
             </p>
           </div>
 
@@ -120,7 +122,7 @@ const Card = ({
                 className="ml-2 mt-2"
                 onClick={() =>
                   window.open(
-                    `https://explorer.factom.com/chains/${chain}`,
+                    `https://gateway.ipfs.io/ipfs/${ipfsHash}`,
                     "_blank"
                   )
                 }
@@ -216,7 +218,7 @@ const Card = ({
               backgroundColor: "#131440"
             }}
           >
-            <div className="ml-1 ">
+            <div className="ml-3 ">
               <img
                 src={herc2}
                 alt="herc-pics"
@@ -226,15 +228,16 @@ const Card = ({
                 }}
               />
             </div>
-            <div className="ml-1 flex6">
+            <div className="flex6">
               <p
-                className="no-space fs-12 "
+                className="no-space fs-10  ml-2"
                 style={{
-                  textAlign: "center",
+                  fontSize: "10px",
+                  // textAlign: "center",
                   color: "#FFFFFF"
                 }}
               >
-                0.00057 HERC = 0.000001655 USD
+                0.00057 HERC = {herc * price} USD
               </p>
             </div>
           </div>
