@@ -33,7 +33,7 @@ function Deck() {
 
   const hercValue = useFetch2();
 
-  let [props, set] = useSprings(data.length, i => ({
+  let [props, set] = useSprings(4, i => ({
     ...to(i),
     from: from(i)
   }));
@@ -78,16 +78,13 @@ function Deck() {
   );
 
   const renderCards = () => {
-    const bb = value.splice(10);
+    const bb = value; //.splice(10);
     const transact = [];
-    if (bb && bb[6] && bb[6].transactions !== undefined) {
-      Object.keys(bb && bb[6] && bb[6].transactions).forEach(key => {
-        let value = bb && bb[6] && bb[6].transactions[key];
-        value.timestamp = key;
-        transact.push(value);
-        return value;
-      });
+
+    if (value.length === 0) {
     }
+
+    console.log("ppp--", props.length);
     return props.map(({ x, y, rot, scale }, i) => (
       <Card
         key={i}
@@ -100,11 +97,12 @@ function Deck() {
         trans={trans}
         transactions={transact}
         data={data}
+        newData={value}
         bind={bind}
         Name={info && info.Name}
         chainId={info && info.hashes && info.hashes.chainId}
         ipfsHash={info && info.hashes && info.hashes.ipfsHash}
-        newData={bb}
+        // newData={bb}
       />
     ));
   };
@@ -118,12 +116,7 @@ function Deck() {
       />
     );
   } else {
-    return (
-      <Fragment>
-        <Header />
-        <Fragment>{renderCards()}</Fragment>
-      </Fragment>
-    );
+    return <Fragment>{renderCards()}</Fragment>;
   }
 }
 

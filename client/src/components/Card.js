@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { animated, interpolate } from "react-spring/hooks";
-import { useFetch2 } from "../utils/useFetch";
 
 import { UpText } from "./InnerComp";
 import InnerContent from "./InnerCont";
@@ -25,42 +24,19 @@ import {
   TwitterIcon
 } from "react-share";
 
-const Card = ({
-  i,
-  x,
-  y,
-  newData,
-  Name,
-  chainId,
-  ipfsHash,
-  transactions,
-  rot,
-  scale,
-  trans,
-  bind,
-  data,
-  herc
-}) => {
-  console.log("herc value", herc);
-  const {
-    // factomEntry, dTime,
-    chain,
-    price
-  } = data[i];
+const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
+  const header = newData && newData[i] && newData[i].header;
+  const Name = newData && newData[i] && newData[i].Name;
+  const ipfsHash =
+    newData && newData[i] && newData[i].hashes && newData[i].hashes.ipfsHash;
 
-  const header = transactions && transactions[0] && transactions[0].header;
-  const dat = transactions && transactions[0] && transactions[0].data;
-  // const ediT =
-  //   transactions &&
-  //   transactions[0] &&
-  //   transactions[0].data &&
-  //   transactions[0].ediT;
-  // const timestamp =
-  //   transactions && transactions[0] && transactions[0].timestamp;
+  const chainId =
+    newData && newData[i] && newData[i].hashes && newData[i].hashes.chainId;
+  const dat = newData && newData[i] && newData[i].data;
 
   return (
     <animated.div
-      className="flex flex1 root"
+      className="flex flex1 root justify-content-center align-items-center"
       key={i}
       style={{
         backgroundColor: "#4fD0e9",
@@ -199,7 +175,7 @@ const Card = ({
                 className="btn btn-warning"
                 onClick={() =>
                   window.open(
-                    `https://explorer.factom.com/chains/${chain}`,
+                    `https://explorer.factom.com/chains/${chainId}`,
                     "_blank"
                   )
                 }
@@ -237,7 +213,7 @@ const Card = ({
                   color: "#FFFFFF"
                 }}
               >
-                0.00057 HERC = {herc * price} USD
+                0.00057 HERC = {herc * (header && header.price)} USD
               </p>
             </div>
           </div>
