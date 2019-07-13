@@ -37,8 +37,6 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
     newData && newData[i] && newData[i].hashes && newData[i].hashes.chainId;
   const dat = newData && newData[i] && newData[i].data;
 
-  console.log("data[[", newData[i]);
-
   return (
     <animated.div
       className="flex flex1 root justify-content-center align-items-center"

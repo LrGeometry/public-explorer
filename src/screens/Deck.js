@@ -7,9 +7,8 @@ import { useFetch2 } from "../utils/useFetch";
 
 import Spinner from "../components/Spinner";
 import Card from "../components/Card";
-import Header from "../components/Header";
 
-import data from "../data";
+// import data from "../data";
 
 import "../styles/Deck.css";
 
@@ -32,8 +31,8 @@ function Deck() {
   const { value, loading, info } = useContext(AppContext);
 
   const hercValue = useFetch2();
-
-  let [props, set] = useSprings(4, i => ({
+  const len = 4; // value.length;
+  let [props, set] = useSprings(len, i => ({
     ...to(i),
     from: from(i)
   }));
@@ -72,7 +71,7 @@ function Deck() {
         };
       });
 
-      if (!down && gone.size === data.length)
+      if (!down && gone.size === len)
         setTimeout(() => gone.clear() || set(i => to(i)), 600);
     }
   );
@@ -84,7 +83,6 @@ function Deck() {
     if (value.length === 0) {
     }
 
-    console.log("ppp--", props.length);
     return props.map(({ x, y, rot, scale }, i) => (
       <Card
         key={i}
@@ -96,7 +94,7 @@ function Deck() {
         scale={scale}
         trans={trans}
         transactions={transact}
-        data={data}
+        // data={data}
         newData={value}
         bind={bind}
         Name={info && info.Name}

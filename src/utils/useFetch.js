@@ -52,7 +52,8 @@ export const useFetch = () => {
         const withoutTrans = storedValue.filter(c => c.transactions);
         const newData = flatten(reformatData(withoutTrans));
         setValue(newData);
-      });
+      })
+      .catch(err => console.log("err", err.message));
   }, []);
 
   return { value, loading, info };

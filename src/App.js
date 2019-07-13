@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Deck from "./screens/Deck";
+import ChildDeck from "./screens/ChildDeck";
 import Assets from "./screens/Assets";
 import Header from "./components/Header";
 
@@ -9,15 +10,14 @@ import { AppContext } from "./AppContext";
 
 const App = () => {
   const data = useFetch();
-  // const [dData, setData] = useState(data);
 
-  // const value = useMemo(() => ({ dData, setData }), [dData, setData]);
   return (
     <Router>
       <Header />
       <AppContext.Provider value={data}>
-        <Route path="/" exact component={Deck} />
-        <Route path="/assets" component={Assets} />
+        <Route exact path="/assets" component={Assets} />
+        <Route exact path="/assets/:id" component={ChildDeck} />
+        <Route exact path="/" component={Deck} />
       </AppContext.Provider>
     </Router>
   );
