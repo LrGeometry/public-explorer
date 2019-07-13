@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.89515fd5.chunk.css",
+    "main.js": "/static/js/main.c7dd224d.chunk.js",
+    "main.js.map": "/static/js/main.c7dd224d.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.7a9c234b.chunk.js": "/static/js/2.7a9c234b.chunk.js",
+    "static/js/2.7a9c234b.chunk.js.map": "/static/js/2.7a9c234b.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.e3a036bbcbace8b6b369403afff019be.js": "/precache-manifest.e3a036bbcbace8b6b369403afff019be.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.89515fd5.chunk.css.map": "/static/css/main.89515fd5.chunk.css.map",
+    "static/media/camera-solid.svg": "/static/media/camera-solid.32bf7190.svg",
+    "static/media/circle-solid.svg": "/static/media/circle-solid.54779019.svg",
+    "static/media/copy-regular.svg": "/static/media/copy-regular.e4fce489.svg",
+    "static/media/file-alt-solid.svg": "/static/media/file-alt-solid.cf5e4039.svg",
+    "static/media/herc2.png": "/static/media/herc2.dab24c4b.png",
+    "static/media/info-circle-solid.svg": "/static/media/info-circle-solid.d9a24d05.svg",
+    "static/media/photos.svg": "/static/media/photos.bcd851cd.svg"
+  }
+}
