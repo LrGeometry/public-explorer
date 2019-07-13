@@ -3,6 +3,10 @@ import React from "react";
 import pic from "../assets/copy-regular.svg";
 
 const InnerContent = ({ picVal, val }) => {
+  function copyToClipboard(data) {
+    navigator.clipboard.writeText(data).then(() => alert("text copied"));
+  }
+
   let text =
     val && val.length > 12
       ? val.substring(0, 10) +
@@ -20,7 +24,14 @@ const InnerContent = ({ picVal, val }) => {
           <p className="small-text no-space">{text} </p>
         </div>
         <div>
-          <img className="ml-2" style={{ height: "12px" }} src={pic} alt="pics" />
+          <a href="/#" onClick={() => copyToClipboard(val)}>
+            <img
+              className="ml-2"
+              style={{ height: "12px" }}
+              src={pic}
+              alt="pics"
+            />
+          </a>
         </div>
       </div>
     </div>

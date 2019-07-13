@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { animated, interpolate } from "react-spring/hooks";
@@ -15,6 +15,8 @@ import photos from "../assets/photos.svg";
 import herc from "../assets/herc_flat.png";
 import herc2 from "../assets/herc2.png";
 
+import new_herc from "../assets/herc_flat_tiny.png";
+
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -29,10 +31,13 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
   const Name = newData && newData[i] && newData[i].Name;
   const ipfsHash =
     newData && newData[i] && newData[i].hashes && newData[i].hashes.ipfsHash;
+  const logo = newData && newData[i] && newData[i].Logo;
 
   const chainId =
     newData && newData[i] && newData[i].hashes && newData[i].hashes.chainId;
   const dat = newData && newData[i] && newData[i].data;
+
+  console.log("data[[", newData[i]);
 
   return (
     <animated.div
@@ -96,12 +101,7 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
             >
               <div
                 className="ml-2 mt-2"
-                onClick={() =>
-                  window.open(
-                    `https://gateway.ipfs.io/ipfs/${ipfsHash}`,
-                    "_blank"
-                  )
-                }
+                onClick={() => window.open(`${logo}`, "_blank")}
               >
                 <p className="fs-14"> click to view photo </p>
               </div>
@@ -132,10 +132,13 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
                     val={header && header.factomEntry}
                   />
                 </div>
-
-                <div className="mt-1">
-                  <InnerContent picVal={circle} val={dat && dat.ediT} />
-                </div>
+                <Fragment>
+                  {!(dat && dat.ediT) ? null : (
+                    <div className="mt-1">
+                      <InnerContent picVal={circle} val={dat && dat.ediT} />
+                    </div>
+                  )}
+                </Fragment>
 
                 <div className="mt-1">
                   <InnerContent picVal={file} val={ipfsHash} />
@@ -188,19 +191,21 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
           <div
             className="d-flex flex1"
             style={{
+              height: "50px",
               justifyContent: "center",
               alignItems: "center",
               width: "100%",
               backgroundColor: "#131440"
             }}
           >
-            <div className="ml-3 ">
+            <div className="ml-2 flex1">
               <img
-                src={herc2}
+                src={new_herc}
                 alt="herc-pics"
                 style={{
-                  height: "40px",
-                  width: "40px"
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain"
                 }}
               />
             </div>
