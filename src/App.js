@@ -15,9 +15,9 @@ const App = () => {
     <Router>
       <Header />
       <AppContext.Provider value={data}>
+        <Route exact path="/" component={Deck} />
         <Route exact path="/assets" component={Assets} />
         <Route exact path="/assets/:id" component={ChildDeck} />
-        <Route exact path="/" component={Deck} />
       </AppContext.Provider>
     </Router>
   );
