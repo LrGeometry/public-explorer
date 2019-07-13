@@ -98,12 +98,12 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
               }}
             >
               <div
-                className="ml-2 mt-2"
+                className="ml-2 mt-1"
                 onClick={() => window.open(`${logo}`, "_blank")}
               >
-                <p className="fs-14"> click to view photo </p>
+                <p className=""> Click to view photo </p>
               </div>
-              <div className="flex1 justify-content-center align-items-center">
+              <div className="flex1 justify-content-center">
                 <img style={{ height: "50px" }} src={photos} alt="pics" />
               </div>
             </div>
@@ -114,7 +114,7 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
               className="d-flex flex6 flex-column "
             >
               <div className="pt-1 ml-2">
-                <p className="small-text no-space"> Copy IPFS HASH </p>
+                <p className="no-space"> Copy IPFS HASH </p>
               </div>
               <div
                 className="d-flex  flex1 flex-column justify-content-center "
@@ -211,12 +211,14 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
               <p
                 className="no-space fs-10  ml-2"
                 style={{
-                  fontSize: "10px",
+                  display: "inline",
+                  fontSize: "13px",
                   // textAlign: "center",
                   color: "#FFFFFF"
                 }}
               >
-                0.00057 HERC = {herc * (header && header.price)} USD
+                0.00057 HERC = {(herc * (header && header.price)).toFixed(9)}
+                USD
               </p>
             </div>
           </div>

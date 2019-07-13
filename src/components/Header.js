@@ -4,7 +4,7 @@ const Header = () => (
   <header>
     <nav className="navbar navbar-expand-md navbar-dark fixed-top header-col">
       <a className="navbar-brand" href="/">
-        Global Assets
+        Globally Public Assets
       </a>
       <button
         className="navbar-toggler"
@@ -26,7 +26,7 @@ const Header = () => (
           </li>
           <li className="nav-item">
             <a className="nav-link" href="/assets">
-              Assets
+              Asset List
             </a>
           </li>
         </ul>

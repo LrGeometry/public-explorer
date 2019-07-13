@@ -9,10 +9,7 @@ import Spinner from "../components/Spinner";
 import Card from "../components/Card";
 import Header from "../components/Header";
 
-// import data from "../data";
-
 import "../styles/Deck.css";
-import "../styles/mainStyle.css";
 
 const to = i => ({
   x: 0,

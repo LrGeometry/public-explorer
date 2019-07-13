@@ -10,6 +10,11 @@ const Assets = () => {
   // const { value, loading, info } = data.dData;
   const { value, loading, info } = data;
 
+  //Remove duplicate
+  const unique = Array.from(new Set(value.map(a => a.hercId))).map(id => {
+    return value.find(a => a.hercId === id);
+  });
+
   if (loading) {
     return (
       <Spinner
@@ -23,7 +28,7 @@ const Assets = () => {
   return (
     <div className="d-flex flex-column mt-5 ">
       <div className="mt-5 justify-content-center align-items-center ml-3 mb-5 ">
-        {value.map((c, i) => (
+        {unique.map((c, i) => (
           <div className=" mt-2">
             <AssetComp name={c.Name} id={c.hercId} />
           </div>

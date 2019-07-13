@@ -21,7 +21,7 @@ const InnerContent = ({ picVal, val }) => {
       </div>
       <div className="d-flex flex4 justify-content-center align-items-center">
         <div className="justify-content-center">
-          <p className="small-text no-space">{text} </p>
+          <p className="small-text no-space bold-small">{text} </p>
         </div>
         <div>
           <a href="/#" onClick={() => copyToClipboard(val)}>
