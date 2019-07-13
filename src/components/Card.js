@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { animated, interpolate } from "react-spring/hooks";
@@ -15,6 +15,8 @@ import photos from "../assets/photos.svg";
 import herc from "../assets/herc_flat.png";
 import herc2 from "../assets/herc2.png";
 
+import new_herc from "../assets/herc_flat_tiny.png";
+
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -29,13 +31,15 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
   const Name = newData && newData[i] && newData[i].Name;
   const ipfsHash =
     newData && newData[i] && newData[i].hashes && newData[i].hashes.ipfsHash;
+  const logo = newData && newData[i] && newData[i].Logo;
 
   const chainId =
     newData && newData[i] && newData[i].hashes && newData[i].hashes.chainId;
   const dat = newData && newData[i] && newData[i].data;
 
+  console.log("data[[", newData[i]);
+
   return (
-<<<<<<< HEAD
     <animated.div
       className="flex flex1 root justify-content-center align-items-center"
       key={i}
@@ -44,72 +48,6 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
         transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`)
       }}
     >
-=======
-    <div className="mt-3 border rounded-lg my-10">
-      <div style={{ backgroundColor: "#e2e6f9", height: "50px" }}>
-        <div className="pl-3 pt-1 no-space">
-          <p className="no-space" style={{ fontSize: 9, color: "#cbccd2" }}>
-            {data1}
-          </p>
-        </div>
-        <div className="d-flex flex-row pl-3 pt-2 flex1 flex-row no-space">
-          <div className="flex flex1 jc">
-            <p style={{ fontSize: 8, color: "#091140" }}>{newData2}</p>
-          </div>
-
-          <div className="flex flex1 jc no-space">
-            <a href="/#" onClick={() => copyToClipboard(data2)}>
-              {/* <SVG /> */}
-              {/* <i
-                className="fas fa-copy"
-                style={{
-                  color: "red"
-                }}
-              /> */}
-              <img
-                style={{ height: "12px" }}
-                src={pic}
-                // src="https://via.placeholder.com/150"
-                alt="testo"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-class Card extends React.Component {
-  render() {
-    const {
-      i,
-      x,
-      y,
-      newData,
-
-      Name,
-      chainId,
-      ipfsHash,
-      transactions,
-      //  rot, scale, trans,
-      bind,
-      data
-    } = this.props;
-
-    const { factomEntry, dTime, ediT, chain, price } = data[i];
-    // console.log("kdks", newData);
-    // const Name = newData[i] && newData[i].Name;
-
-    //  timestamp, data: nedata, header = transactions[Math.random()];
-
-    // const transactions = newData[i] && newData[i].transactions;
-    console.log("kk", i);
-    // const { Name, hercId, Logo, hashes, transactions } = newData[i];
-    // console.log("transactions", transactions);
-
-    return (
->>>>>>> 538b71e81173b1c2cfc3c7e6e53e17340b9b3d35
       <animated.div
         style={{
           // transform: interpolate([rot, scale], trans),
@@ -163,12 +101,7 @@ class Card extends React.Component {
             >
               <div
                 className="ml-2 mt-2"
-                onClick={() =>
-                  window.open(
-                    `https://gateway.ipfs.io/ipfs/${ipfsHash}`,
-                    "_blank"
-                  )
-                }
+                onClick={() => window.open(`${logo}`, "_blank")}
               >
                 <p className="fs-14"> click to view photo </p>
               </div>
@@ -182,15 +115,8 @@ class Card extends React.Component {
               }}
               className="d-flex flex6 flex-column "
             >
-<<<<<<< HEAD
               <div className="pt-1 ml-2">
                 <p className="small-text no-space"> Copy IPFS HASH </p>
-=======
-              <div className="d-flex flex-column flex1 mt-1">
-                <UpText left="Touchpoint" right={Name} />
-                <UpText left="Date" right="July 10, 2019" />
-                <UpText left="Time" right="07:26:54" />
->>>>>>> 538b71e81173b1c2cfc3c7e6e53e17340b9b3d35
               </div>
               <div
                 className="d-flex  flex1 flex-column justify-content-center "
@@ -206,32 +132,16 @@ class Card extends React.Component {
                     val={header && header.factomEntry}
                   />
                 </div>
-
-                <div className="mt-1">
-                  <InnerContent picVal={circle} val={dat && dat.ediT} />
-                </div>
-<<<<<<< HEAD
+                <Fragment>
+                  {!(dat && dat.ediT) ? null : (
+                    <div className="mt-1">
+                      <InnerContent picVal={circle} val={dat && dat.ediT} />
+                    </div>
+                  )}
+                </Fragment>
 
                 <div className="mt-1">
                   <InnerContent picVal={file} val={ipfsHash} />
-=======
-                <div
-                  className="d-flex  flex1 flex-column justify-content-center "
-                  style={{ marginBottom: "5%" }}
-                >
-                  <div className="mt-1">
-                    <InnerContent picVal={camera} val={chainId} />
-                  </div>
-                  <div className="mt-1">
-                    <InnerContent picVal={info} val={factomEntry} />
-                  </div>
-                  <div className="mt-1">
-                    <InnerContent picVal={circle} val={ediT} />
-                  </div>
-                  <div className="mt-1">
-                    <InnerContent picVal={file} val={ipfsHash} />
-                  </div>
->>>>>>> 538b71e81173b1c2cfc3c7e6e53e17340b9b3d35
                 </div>
               </div>
             </div>
@@ -281,19 +191,21 @@ class Card extends React.Component {
           <div
             className="d-flex flex1"
             style={{
+              height: "50px",
               justifyContent: "center",
               alignItems: "center",
               width: "100%",
               backgroundColor: "#131440"
             }}
           >
-            <div className="ml-3 ">
+            <div className="ml-2 flex1">
               <img
-                src={herc2}
+                src={new_herc}
                 alt="herc-pics"
                 style={{
-                  height: "40px",
-                  width: "40px"
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain"
                 }}
               />
             </div>
