@@ -29,6 +29,7 @@ import {
 const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
   const header = newData && newData[i] && newData[i].header;
   const Name = newData && newData[i] && newData[i].Name;
+  const coordinates = newData && newData[i] && newData[i].coordinates;
   const ipfsHash =
     newData && newData[i] && newData[i].hashes && newData[i].hashes.ipfsHash;
   const logo = newData && newData[i] && newData[i].Logo;
@@ -84,7 +85,7 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
             }}
           >
             <div className="d-flex flex-column flex1 mt-1">
-              <UpText left="Touchpoint" right={Name} />
+              <UpText left="Touchpoint" right={coordinates} />
               <UpText left="Date" right={header && header.dTime} />
               <UpText left="Time" right={moment().format("LTS")} />
             </div>
