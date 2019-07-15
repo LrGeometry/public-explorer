@@ -27,6 +27,11 @@ import {
 } from "react-share";
 
 const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
+  const timeStamp = parseInt(newData && newData[i] && newData[i].timestamp);
+
+  console.log("trthr", timeStamp);
+  console.log("trthr", new Date(timeStamp));
+
   const header = newData && newData[i] && newData[i].header;
   const Name = newData && newData[i] && newData[i].Name;
   const coordinates = newData && newData[i] && newData[i].coordinates;
@@ -37,6 +42,8 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
   const chainId =
     newData && newData[i] && newData[i].hashes && newData[i].hashes.chainId;
   const dat = newData && newData[i] && newData[i].data;
+
+  const priceToShow = (herc * (header && header.price)).toFixed(9);
 
   return (
     <animated.div
@@ -87,7 +94,7 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
             <div className="d-flex flex-column flex1 mt-1">
               <UpText left="Touchpoint" right={coordinates} />
               <UpText left="Date" right={header && header.dTime} />
-              <UpText left="Time" right={moment().format("LTS")} />
+              <UpText left="Time" right={moment(timeStamp).format("LL")} />
             </div>
             <div
               className=" d-flex flex-column flex5 mt-3"
@@ -218,7 +225,7 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
                   color: "#FFFFFF"
                 }}
               >
-                0.00057 HERC = {(herc * (header && header.price)).toFixed(9)}
+                0.00057 HERC = {priceToShow === 0 ? 0 : priceToShow}
                 USD
               </p>
             </div>
