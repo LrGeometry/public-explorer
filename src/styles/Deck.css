@@ -16,17 +16,20 @@ body {
 }
 
 #root {
-  background: salmon;
+  /* background: salmon; */
   position: fixed;
-  overflow: hidden;
+ overflow: scroll;
+   /* overflow: hidden; */
   width: 100%;
   height: 100%;
-  cursor: url("https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png")
+   /* cursor: url("https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png")
       39 39,
-    auto;
+    auto; */
 }
 
-#root > div {
+.root {
+    /* overflow: hidden; */
+  padding-top: 70px;
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -36,7 +39,7 @@ body {
   justify-content: center;
 }
 
-#root > div > div {
+.root2 {
   padding: 5px;
   background-color: white;
   background-size: auto 85%;
@@ -47,9 +50,48 @@ body {
   height: 580px;
   max-height: 610px;
   will-change: transform;
-  /* border-radius: 10px; */
+  border-radius: 10px;
   box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4),
     0 10px 10px -10px rgba(50, 50, 73, 0.3);
+}
+
+
+@media only screen and (max-width:600px) {
+  .root {
+       margin-top: 10px;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    will-change: transform;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+      /* border-radius: 50px; */
+  }
+
+  .root2 {
+    margin-top: 15px;
+    padding: 5px;
+    background-color: white;
+    background-size: auto 85%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* width: 300px;
+    max-width: 300px; */
+
+
+     width: 90%;
+    max-width: 90%;
+
+     height: 90%;
+    max-height: 90%;
+
+    will-change: transform;
+    border-radius: 50px;
+    box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4),
+      0 10px 10px -10px rgba(50, 50, 73, 0.3);
+  }
 }
 
 img {

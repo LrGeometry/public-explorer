@@ -1,109 +1,155 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import moment from "moment";
 import { animated, interpolate } from "react-spring/hooks";
-// import Carousel from "nuka-carousel";
-// import SVG from "./svg";
-import pic from "../assets/copy-regular.svg";
 
-const InnerComp = ({ data1, data2 }) => {
-  function copyToClipboard(data) {
-    navigator.clipboard.writeText(data).then(() => alert("text copied"));
-  }
+import { UpText } from "./InnerComp";
+import InnerContent from "./InnerCont";
 
-  let newData2 =
-    data2 && data2.length > 12
-      ? data2.substring(0, 10) +
-        "...." +
-        data2.substring(data2.length - 9, data2.length)
-      : data2;
+import camera from "../assets/camera-solid.svg";
+import circle from "../assets/circle-solid.svg";
+import file from "../assets/file-alt-solid.svg";
+import info from "../assets/info-circle-solid.svg";
+import share from "../assets/share.svg";
+
+import photos from "../assets/photos.svg";
+
+import herc from "../assets/herc_flat.png";
+import herc2 from "../assets/herc2.png";
+
+import new_herc from "../assets/herc_flat_tiny.png";
+
+const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
+  const timeStamp = parseInt(newData && newData[i] && newData[i].timestamp);
+
+  const header = newData && newData[i] && newData[i].header;
+  const Name = newData && newData[i] && newData[i].Name;
+  const coordinates = newData && newData[i] && newData[i].coordinates;
+  const ipfsHash =
+    newData && newData[i] && newData[i].hashes && newData[i].hashes.ipfsHash;
+  const logo = newData && newData[i] && newData[i].Logo;
+
+  const chainId =
+    newData && newData[i] && newData[i].hashes && newData[i].hashes.chainId;
+  const dat = newData && newData[i] && newData[i].data;
+
+  const priceToShow = (herc * (header && header.price)).toFixed(9);
+
   return (
-    <div className="mt-3 border rounded-lg my-10">
-      <div style={{ backgroundColor: "#e2e6f9", height: "50px" }}>
-        <div className="pl-3 pt-1 no-space">
-          <p className="no-space" style={{ fontSize: 9, color: "#cbccd2" }}>
-            {data1}
-          </p>
-        </div>
-        <div className="d-flex flex-row pl-3 pt-2 flex1 flex-row no-space">
-          <div className="flex flex1 jc">
-            <p style={{ fontSize: 8, color: "#091140" }}>{newData2}</p>
-          </div>
-
-          <div className="flex flex1 jc no-space">
-            <a href="/#" onClick={() => copyToClipboard(data2)}>
-              {/* <SVG /> */}
-              {/* <i
-                className="fas fa-copy"
-                style={{
-                  color: "red"
-                }}
-              /> */}
-              <img
-                style={{ height: "12px" }}
-                src={pic}
-                // src="https://via.placeholder.com/150"
-                alt="testo"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-class Card extends React.Component {
-  render() {
-    const {
-      i,
-      x,
-      y,
-      //  rot, scale, trans,
-      bind,
-      data
-    } = this.props;
-    const { ipfsHash, factomEntry, dTime, ediT, chain, price } = data[i];
-
-    return (
+    <animated.div
+      className="flex flex1 root  flex-column justify-content-center align-items-center"
+      key={i}
+      style={{
+        backgroundColor: "#4fD0e9",
+        transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`)
+      }}
+    >
       <animated.div
-        className="flex flex1"
-        key={i}
+        className="flex1"
         style={{
-          backgroundColor: "#4fD0e9",
-          // transform: `translate3d("${rnd(0, 4)}px", "${rnd(-10, -20)}px", "${rnd(0, 4)}px")`
-          transform: interpolate(
-            [x, y],
-            (x, y) => `translate3d(${x}px,${y}px,0)`
-          )
+          // transform: interpolate([rot, scale], trans),
+          margin: -4,
+          padding: -4
         }}
+        className="root2 flex flex9 border rounded-lg flex-column no-gutters no-space"
+        {...bind(i)}
       >
-        <animated.div
-          style={{
-            transform: `translate(-1px, -2px) scale(1) rotate(0deg)`
-            // transform: `translate(-1px, -2px) scale(1) rotate(${i}deg)`
-            // transform: interpolate([rot, scale], trans)
-            // transform: "perspective(1500px) rotateX(30deg) rotateY(- 0.004deg) rotateZ(-0.04deg) scale(1.1)"
-          }}
-          className="flex border rounded-lg"
-          {...bind(i)}
-        >
-          <div className="d-flex flex-column  ml-3 mr-3 mt-2 mb-5 flex flex1">
-            <div className="d-flex flex-column flex5">
-              <InnerComp data1="created" data2={dTime} />
-              <InnerComp data1="factom chain" data2={chain} />
-              <InnerComp data1="factom entry" data2={factomEntry} />
-              <InnerComp data1="core-properties" data2={ipfsHash} />
-              <InnerComp data1="edit IPFS" data2={ediT} />
-              <InnerComp data1="price" data2={price} />
+        <div className="col-md-12 col-sm-12 no-space d-flex flex1 flex-column">
+          <div
+            className="d-flex flex1"
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              height: "10%",
+              width: "100%",
+              backgroundColor: "#131440"
+            }}
+          >
+            <p
+              className="no-space"
+              style={{
+                textAlign: "center",
+                color: "#FFFFFF"
+              }}
+            >
+              Tracking Asset: {Name}
+            </p>
+          </div>
+
+          <div
+            className=" ml-3 mr-3 d-flex flex7 flex-column"
+            style={{
+              backgroundColor: "#FFFEFF"
+            }}
+          >
+            <div className="d-flex flex-column flex1 mt-1">
+              <UpText left="Touchpoint" right={coordinates} />
+              <UpText left="Date" right={header && header.dTime} />
+              <UpText left="Time" right={moment(timeStamp).format("LL")} />
+            </div>
+            <div
+              className=" d-flex flex-column flex5 mt-3"
+              style={{
+                backgroundColor: "#E4E4FA",
+                border: "3px solid ",
+                borderColor: "yellow",
+                marginBottom: "10px"
+              }}
+            >
+              <div
+                className="ml-2 mt-1"
+                onClick={() => window.open(`${logo}`, "_blank")}
+              >
+                <p className=""> Click to view photo </p>
+              </div>
+              <div className="flex1 justify-content-center">
+                <img style={{ height: "50px" }} src={photos} alt="pics" />
+              </div>
+            </div>
+            <div
+              style={{
+                backgroundColor: "#F4F1FC"
+              }}
+              className="d-flex flex6 flex-column "
+            >
+              <div className="pt-1 ml-2">
+                <p className="no-space"> Copy IPFS HASH </p>
+              </div>
+              <div
+                className="d-flex  flex1 flex-column justify-content-center "
+                style={{ marginBottom: "5%" }}
+              >
+                <div className="mt-1">
+                  <InnerContent picVal={camera} val={chainId} />
+                </div>
+
+                <div className="mt-1">
+                  <InnerContent
+                    picVal={info}
+                    val={header && header.factomEntry}
+                  />
+                </div>
+                <Fragment>
+                  {!(dat && dat.ediT) ? null : (
+                    <div className="mt-1">
+                      <InnerContent picVal={circle} val={dat && dat.ediT} />
+                    </div>
+                  )}
+                </Fragment>
+
+                <div className="mt-1">
+                  <InnerContent picVal={file} val={ipfsHash} />
+                </div>
+              </div>
             </div>
 
-            <div className="d-flex align-items-center flex1 align-self-center">
+            <div className="d-flex mt-1 mb-2 flex1 align-items-center  align-self-center">
               <button
                 type="button"
                 className="btn btn-warning"
                 onClick={() =>
                   window.open(
-                    `https://explorer.factom.com/chains/${chain}`,
+                    `https://explorer.factom.com/chains/${chainId}`,
                     "_blank"
                   )
                 }
@@ -112,11 +158,55 @@ class Card extends React.Component {
               </button>
             </div>
           </div>
-        </animated.div>
+
+          <div
+            className="d-flex flex1"
+            style={{
+              height: "50px",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              backgroundColor: "#131440"
+            }}
+          >
+            <div className="ml-2 flex1">
+              <img
+                src={new_herc}
+                alt="herc-pics"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain"
+                }}
+              />
+            </div>
+            <div className="flex6">
+              <p
+                className="no-space fs-10  ml-2"
+                style={{
+                  display: "inline",
+                  fontSize: "13px",
+                  // textAlign: "center",
+                  color: "#FFFFFF"
+                }}
+              >
+                0.00057 HERC = {priceToShow === 0 ? 0 : priceToShow}
+                USD
+              </p>
+            </div>
+          </div>
+        </div>
       </animated.div>
-    );
-  }
-}
+      <div className="mt-2 flex1 justify-content-center align-items-center">
+        <img
+          style={{ height: "50px", color: "#131440" }}
+          src={share}
+          alt="pics"
+        />
+      </div>
+    </animated.div>
+  );
+};
 
 Card.propTypes = {
   name: PropTypes.string,

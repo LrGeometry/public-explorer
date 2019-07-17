@@ -7,9 +7,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.scroll-controller {
+   overflow: scroll;
+}
+
+.header-col {
+  background-color: rgb(19, 20, 64);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.bold{
+  font-weight: 800
+}
+
+.fs-14{
+  font-size: 14px
+}
+
+.fs-12{
+  font-size: 14px
+}
+
+.small-text {
+  font-size: 13px
 }
 
 .flex1 {
@@ -30,6 +53,14 @@ code {
 
 .flex5 {
   flex: 5
+}
+
+.flex6 {
+  flex: 6
+}
+
+.flex7 {
+  flex: 7
 }
 
 .flex{
@@ -174,8 +205,8 @@ code {
 }
 
 .no-space{
-   padding:0px; 
-   margin:0px;
+   padding:0; 
+   margin:0;
 }
 
 .xs-11 {
