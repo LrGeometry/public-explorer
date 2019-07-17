@@ -12,16 +12,18 @@ import "./styles/mainStyle.css";
 
 const App = () => {
   const data = useFetch();
-
+  // console.log("dkskds", data);
+  // const data = dat
   return (
-    <Router>
-      <Header />
-      <AppContext.Provider value={data}>
+    <AppContext.Provider value={data}>
+      <Router>
+        <Header />
+
         <Route path="/" exact component={Deck} />
         <Route path="/assets" exact component={Assets} />
         <Route exact path="/assets/:id" component={ChildDeck} />
-      </AppContext.Provider>
-    </Router>
+      </Router>
+    </AppContext.Provider>
   );
 };
 

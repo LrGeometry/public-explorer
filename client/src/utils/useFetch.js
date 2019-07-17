@@ -22,6 +22,7 @@ export const useFetch = () => {
   const [value, setValue] = useState([]);
   const [info, setInfo] = useState({});
 
+  // console.log("OOOo", value);
   useEffect(() => {
     const rootRef = firebase.database().ref();
     rootRef

@@ -2,6 +2,13 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
+const logRequestStart = (req, res, next) => {
+  console.info(`${req.method} ${req.originalUrl}`);
+  next();
+};
+
+app.use(logRequestStart);
+
 app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.get("/*", function(req, res) {
@@ -13,4 +20,4 @@ app.listen(port, () => {
   console.log(`Server running at ${port}`);
 });
 
-// app.keepAliveTimeout = 65000;
+app.keepAliveTimeout = 65000;
