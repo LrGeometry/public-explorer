@@ -10,6 +10,8 @@ import camera from "../assets/camera-solid.svg";
 import circle from "../assets/circle-solid.svg";
 import file from "../assets/file-alt-solid.svg";
 import info from "../assets/info-circle-solid.svg";
+import share from "../assets/share.svg";
+
 import photos from "../assets/photos.svg";
 
 import herc from "../assets/herc_flat.png";
@@ -17,20 +19,8 @@ import herc2 from "../assets/herc2.png";
 
 import new_herc from "../assets/herc_flat_tiny.png";
 
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-  WhatsappIcon,
-  FacebookIcon,
-  TwitterIcon
-} from "react-share";
-
 const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
   const timeStamp = parseInt(newData && newData[i] && newData[i].timestamp);
-
-  console.log("trthr", timeStamp);
-  console.log("trthr", new Date(timeStamp));
 
   const header = newData && newData[i] && newData[i].header;
   const Name = newData && newData[i] && newData[i].Name;
@@ -47,7 +37,7 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
 
   return (
     <animated.div
-      className="flex flex1 root justify-content-center align-items-center"
+      className="flex flex1 root  flex-column justify-content-center align-items-center"
       key={i}
       style={{
         backgroundColor: "#4fD0e9",
@@ -55,12 +45,13 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
       }}
     >
       <animated.div
+        className="flex1"
         style={{
           // transform: interpolate([rot, scale], trans),
           margin: -4,
           padding: -4
         }}
-        className="root2 flex flex1 border rounded-lg flex-column no-gutters no-space"
+        className="root2 flex flex9 border rounded-lg flex-column no-gutters no-space"
         {...bind(i)}
       >
         <div className="col-md-12 col-sm-12 no-space d-flex flex1 flex-column">
@@ -151,32 +142,6 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
                 </div>
               </div>
             </div>
-            <div className="d-flex flex1 mt-3 justify-content-center align-items-center">
-              <FacebookShareButton
-                url="facebook.com"
-                quote="herc"
-                className="Demo__some-network__share-button"
-              >
-                <FacebookIcon size={25} round />
-              </FacebookShareButton>
-
-              <TwitterShareButton
-                url="twitter.com"
-                title="herc"
-                className="Demo__some-network__share-button"
-              >
-                <TwitterIcon size={25} round />
-              </TwitterShareButton>
-
-              <WhatsappShareButton
-                url="web.whatsapp.com"
-                title="herc"
-                separator=":: "
-                className="Demo__some-network__share-button"
-              >
-                <WhatsappIcon size={25} round />
-              </WhatsappShareButton>
-            </div>
 
             <div className="d-flex mt-1 mb-2 flex1 align-items-center  align-self-center">
               <button
@@ -232,6 +197,13 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
           </div>
         </div>
       </animated.div>
+      <div className="mt-2 flex1 justify-content-center align-items-center">
+        <img
+          style={{ height: "50px", color: "#131440" }}
+          src={share}
+          alt="pics"
+        />
+      </div>
     </animated.div>
   );
 };

@@ -63,6 +63,13 @@ code {
   flex: 7
 }
 
+.flex8 {
+  flex: 8
+}
+
+.flex9 {
+  flex: 9 
+}
 .flex{
   display: flex
 }
