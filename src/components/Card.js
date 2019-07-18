@@ -1,10 +1,11 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { animated, interpolate } from "react-spring/hooks";
 
 import { UpText } from "./InnerComp";
 import InnerContent from "./InnerCont";
+import MediaShareModal from "./MediaShareModal";
 
 import camera from "../assets/camera-solid.svg";
 import circle from "../assets/circle-solid.svg";
@@ -23,6 +24,7 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
   const timeStamp = parseInt(newData && newData[i] && newData[i].timestamp);
 
   const header = newData && newData[i] && newData[i].header;
+  const hercId = newData && newData[i] && newData[i].hercId;
   const Name = newData && newData[i] && newData[i].Name;
   const coordinates = newData && newData[i] && newData[i].coordinates;
   const ipfsHash =
@@ -34,6 +36,14 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
   const dat = newData && newData[i] && newData[i].data;
 
   const priceToShow = (herc * (header && header.price)).toFixed(9);
+
+  const quote = `View ${Name} lifecycle on HERC Public Blockchain Explorer! ${`https://objective-pasteur-ce3b9e.netlify.com/assets/${hercId}`} You can begin your value chain legend here: https://herc.one/getstarted`;
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(!show);
+  };
 
   return (
     <animated.div
@@ -197,13 +207,17 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
           </div>
         </div>
       </animated.div>
-      <div className="mt-2 flex1 justify-content-center align-items-center">
+      <div
+        className="mt-2 flex1 justify-content-center align-items-center"
+        onClick={() => handleClose()}
+      >
         <img
           style={{ height: "50px", color: "#131440" }}
           src={share}
           alt="pics"
         />
       </div>
+      <MediaShareModal quote={quote} show={show} handleClose={handleClose} />
     </animated.div>
   );
 };
