@@ -99,6 +99,7 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
             </div>
             <div
               className=" d-flex flex-column flex5 mt-3"
+              onClick={() => window.open(`${logo}`, "_blank")}
               style={{
                 backgroundColor: "#E4E4FA",
                 border: "3px solid ",
@@ -106,10 +107,7 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
                 marginBottom: "10px"
               }}
             >
-              <div
-                className="ml-2 mt-1"
-                onClick={() => window.open(`${logo}`, "_blank")}
-              >
+              <div className="ml-2 mt-1">
                 <p className=""> Click to view photo </p>
               </div>
               <div className="flex1 justify-content-center">
