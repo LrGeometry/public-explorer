@@ -11,24 +11,24 @@ const logRequestStart = (req, res, next) => {
 };
 
 // Certificate
-const privateKey = fs.readFileSync(
-  "/etc/letsencrypt/live/explorer.herc.one/privkey.pem",
-  "utf8"
-);
-const certificate = fs.readFileSync(
-  "/etc/letsencrypt/live/explorer.herc.one/cert.pem",
-  "utf8"
-);
-const ca = fs.readFileSync(
-  "/etc/letsencrypt/live/explorer.herc.one/chain.pem",
-  "utf8"
-);
+// const privateKey = fs.readFileSync(
+//   "/etc/letsencrypt/live/explorer.herc.one/privkey.pem",
+//   "utf8"
+// );
+// const certificate = fs.readFileSync(
+//   "/etc/letsencrypt/live/explorer.herc.one/cert.pem",
+//   "utf8"
+// );
+// const ca = fs.readFileSync(
+//   "/etc/letsencrypt/live/explorer.herc.one/chain.pem",
+//   "utf8"
+// );
 
-const credentials = {
-  key: privateKey,
-  cert: certificate,
-  ca: ca
-};
+// const credentials = {
+//   key: privateKey,
+//   cert: certificate,
+//   ca: ca
+// };
 
 app.use(logRequestStart);
 
@@ -38,9 +38,8 @@ app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-const server = https.createServer(credentials, app);
 const port = 3000;
-server.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server running at ${port}`);
 });
 
