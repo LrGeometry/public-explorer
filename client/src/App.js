@@ -18,7 +18,6 @@ const App = () => {
     <AppContext.Provider value={data}>
       <Router>
         <Header />
-
         <Route path="/" exact component={Deck} />
         <Route path="/assets" exact component={Assets} />
         <Route exact path="/assets/:id" component={ChildDeck} />

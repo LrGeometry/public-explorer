@@ -4,7 +4,8 @@ import pic from "../assets/copy-regular.svg";
 
 const InnerContent = ({ picVal, val }) => {
   function copyToClipboard(data) {
-    navigator.clipboard.writeText(data).then(() => alert("text copied"));
+    const text = `IPFS Hash ${data}   has been copied to clipboard. Go to https://ipfs.io/ipfs/${data} for more details. You may experience long loadtimes on a mobile device.`;
+    navigator.clipboard.writeText(data).then(() => alert(text));
   }
 
   let text =

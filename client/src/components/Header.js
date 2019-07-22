@@ -29,6 +29,18 @@ const Header = () => (
               Asset List
             </a>
           </li>
+
+          <li className="nav-item">
+            <a className="nav-link" href="https://herc.one/get-started">
+              Create Value Chain
+            </a>
+          </li>
+
+          <li className="nav-item">
+            <a className="nav-link" href="https://hipr.one/">
+              Play HIPR
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

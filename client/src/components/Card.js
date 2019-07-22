@@ -37,7 +37,7 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
 
   const priceToShow = (herc * (header && header.price)).toFixed(9);
 
-  const quote = `View ${Name} lifecycle on HERC Public Blockchain Explorer! ${`https://objective-pasteur-ce3b9e.netlify.com/assets/${hercId}`} You can begin your value chain legend here: https://herc.one/getstarted`;
+  const quote = `View ${Name}'s lifecycle on HERC Public Blockchain Explorer! ${`https://explorer.herc.one/assets/${hercId}`} You can begin your value chain legend here: https://herc.one/getstarted`;
 
   const [show, setShow] = useState(false);
 

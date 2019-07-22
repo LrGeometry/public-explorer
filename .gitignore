@@ -14,7 +14,8 @@
 .env
 
 /client/node_modules
-# /clients/.env
+/clients/.env
+.reference.md
 
 # misc
 .DS_Store

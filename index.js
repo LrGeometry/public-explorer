@@ -10,25 +10,7 @@ const logRequestStart = (req, res, next) => {
   next();
 };
 
-// Certificate
-// const privateKey = fs.readFileSync(
-//   "/etc/letsencrypt/live/explorer.herc.one/privkey.pem",
-//   "utf8"
-// );
-// const certificate = fs.readFileSync(
-//   "/etc/letsencrypt/live/explorer.herc.one/cert.pem",
-//   "utf8"
-// );
-// const ca = fs.readFileSync(
-//   "/etc/letsencrypt/live/explorer.herc.one/chain.pem",
-//   "utf8"
-// );
 
-// const credentials = {
-//   key: privateKey,
-//   cert: certificate,
-//   ca: ca
-// };
 
 app.use(logRequestStart);
 
