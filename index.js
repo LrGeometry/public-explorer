@@ -1,16 +1,11 @@
 const express = require("express");
-const fs = require("fs");
-// const http = require("http");
-const https = require("https");
 const path = require("path");
 const app = express();
 
 const logRequestStart = (req, res, next) => {
-  console.info(`${req.method} ${req.originalUrl}`);
+  // console.info(`${req.method} ${req.originalUrl}`);
   next();
 };
-
-
 
 app.use(logRequestStart);
 
@@ -24,5 +19,3 @@ const port = 3000;
 app.listen(port, () => {
   console.log(`Server running at ${port}`);
 });
-
-// app.keepAliveTimeout = 65000;
