@@ -31,7 +31,7 @@ function Deck() {
   const { value, loading, info } = useContext(AppContext);
 
   const hercValue = useFetch2();
-  const len = 4; // value.length;
+  const len = 6; // value.length;
   let [props, set] = useSprings(len, i => ({
     ...to(i),
     from: from(i)

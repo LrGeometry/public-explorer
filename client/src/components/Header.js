@@ -26,7 +26,7 @@ const Header = () => (
           </li>
           <li className="nav-item">
             <a className="nav-link" href="/assets">
-              Asset List
+              Public Asset List
             </a>
           </li>
 
@@ -39,6 +39,21 @@ const Header = () => (
           <li className="nav-item">
             <a className="nav-link" href="https://hipr.one/">
               Play HIPR
+            </a>
+          </li>
+
+          <li className="nav-item">
+            <a className="nav-link" href="https://wallet.herc.one/">
+              Wallet
+            </a>
+          </li>
+
+          <li className="nav-item">
+            <a
+              className="nav-link"
+              href="https://etherscan.io/token/0x6251583e7d997df3604bc73b9779196e94a090ce"
+            >
+              Blockscanner
             </a>
           </li>
         </ul>
