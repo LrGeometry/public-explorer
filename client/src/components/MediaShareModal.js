@@ -17,6 +17,7 @@ import {
   PocketShareButton,
   InstapaperShareButton,
   EmailShareButton,
+  EmailIcon,
   RedditIcon,
   WhatsappIcon,
   FacebookIcon,
@@ -119,14 +120,14 @@ const MediaShare = ({ show, handleClose, quote }) => (
         </div>
 
         <div className="col-sm-3">
-          <WhatsappShareButton
-            url="web.whatsapp.com"
-            title="herc"
-            separator=":: "
-            className="Demo__some-network__share-button col-sm-3"
+          <EmailShareButton
+            className="Demo__some-network__share-button col-sm-4"
+            url={"gmail.com"}
+            subject={quote}
+            body={quote}
           >
-            <WhatsappIcon size={60} round />
-          </WhatsappShareButton>
+            <EmailIcon size={60} round />
+          </EmailShareButton>
         </div>
       </div>
     </div>
