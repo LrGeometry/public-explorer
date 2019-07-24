@@ -67,9 +67,10 @@ export const useFetch2 = () => {
       .then(response => response.json())
       .then(data => {
         const hercUSDV = data.find(c => c.symbol === "HERCUSDV");
+        console.log("jdjdjd", hercUSDV);
         setHerc(hercUSDV.h);
       })
       .catch(err => {});
-  }, []);
+  }, [herc]);
   return herc;
 };

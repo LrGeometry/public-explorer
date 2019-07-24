@@ -10,6 +10,8 @@ import { AppContext } from "./AppContext";
 
 import "./styles/mainStyle.css";
 
+// const store = createStore(rootReducer);
+
 const App = () => {
   const data = useFetch();
   // console.log("dkskds", data);

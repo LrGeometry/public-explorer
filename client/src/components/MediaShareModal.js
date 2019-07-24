@@ -29,9 +29,19 @@ import {
 } from "react-share";
 
 const MediaShare = ({ show, handleClose, quote }) => (
-  <Modal show={show} onHide={handleClose} className="container ">
+  <Modal
+    show={show}
+    onHide={handleClose}
+    className="d-flex"
+    style={{
+      width: "100vw",
+      display: "flex",
+      justifyContent: "flex-end",
+      alignItems: "flex-end"
+    }}
+  >
     <div className=" col-lg-12 col-sm-12 mt-3 mb-3">
-      <div className="col-lg-12  d-flex no-gutter no-space col-sm-12 mt-2 mb-2">
+      <div className="col-lg-12  d-flex no-gutter no-space col-sm-12 mt-2 mb-2 justify-content-center align-items-center">
         <div className="col-sm-3">
           <FacebookShareButton
             url="facebook.com"
@@ -65,7 +75,7 @@ const MediaShare = ({ show, handleClose, quote }) => (
         </div>
       </div>
 
-      <div className="col-lg-12  d-flex no-gutter no-space col-sm-12 mt-2 mb-2">
+      <div className="col-lg-12  d-flex no-gutter no-space col-sm-12 mt-2 mb-2 justify-content-center align-items-center">
         <div className="col-sm-3">
           <LinkedinShareButton
             url="linkedin.com"
@@ -98,7 +108,7 @@ const MediaShare = ({ show, handleClose, quote }) => (
         </div>
       </div>
 
-      <div className="col-lg-12  d-flex no-gutter no-space col-sm-12 mt-2 mb-2">
+      <div className="col-lg-12  d-flex no-gutter no-space col-sm-12 mt-2 mb-2 justify-content-center align-items-center">
         <div className="col-sm-3">
           <RedditShareButton
             url="reddit.com"
