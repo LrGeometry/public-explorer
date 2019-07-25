@@ -1,11 +1,9 @@
-import { useEffect, useContext, useState } from "react";
-import { AppContext } from "../AppContext";
+import { useEffect, useState } from "react";
 import firebase from "../firebase.js";
 
-const flatten = list => list.flat();
-// list.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
+export const flatten = list => list.flat();
 
-const reformatData = list => {
+export const reformatData = list => {
   if (list === undefined) return [];
   return list.reduce((arr, a, i) => {
     let ret = a.transactions.map((c, ii) => {
@@ -22,7 +20,6 @@ export const useFetch = () => {
   const [value, setValue] = useState([]);
   const [info, setInfo] = useState({});
 
-  console.log("OOOo", loading);
   useEffect(() => {
     const rootRef = firebase.database().ref();
     rootRef

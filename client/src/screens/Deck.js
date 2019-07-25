@@ -1,15 +1,13 @@
-import React, { useState, useContext, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import { useSprings } from "react-spring/hooks";
 import { useGesture } from "react-with-gesture";
-import { AppContext } from "../AppContext";
+import { useSelector } from "react-redux";
 
 import { useFetch2 } from "../utils/useFetch";
 
 import Spinner from "../components/Spinner";
 import Card from "../components/Card";
-
-// import data from "../data";
 
 import "../styles/Deck.css";
 
@@ -27,15 +25,14 @@ const trans = (r, s) =>
     10}deg) rotateZ(${r}deg) scale(${s})`;
 
 function Deck() {
+  const assets = useSelector(({ assets }) => assets);
   const [gone] = useState(() => new Set());
 
-  const { value, loading, info } = useContext(AppContext);
+  const { value, loading, info } = assets;
 
   const hercValue = useFetch2();
 
-  console.log("jdjdj", loading);
-
-  const len = 8; // value.length;
+  const len = value.length; // value.length;
   let [props, set] = useSprings(len, i => ({
     ...to(i),
     from: from(i)

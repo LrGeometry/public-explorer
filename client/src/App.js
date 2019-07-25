@@ -1,28 +1,52 @@
-import React, { useMemo } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Deck from "./screens/Deck";
+import { useSelector, useDispatch } from "react-redux";
+
 import ChildDeck from "./screens/ChildDeck";
 import Assets from "./screens/Assets";
 import Header from "./components/Header";
+import Spinner from "./components/Spinner";
+import Deck from "./screens/Deck";
 
-import { useFetch } from "./utils/useFetch";
-import { AppContext } from "./AppContext";
+import { getAllAssets } from "../src/actions/Asset";
 
 import "./styles/mainStyle.css";
 
 const App = () => {
-  const data = useFetch();
+  const dispatch = useDispatch();
 
-  const datum = useMemo(() => data, [data]);
-  return (
-    <AppContext.Provider value={datum}>
-      <Router>
+  const as = useSelector(state => state.assets);
+  const assets = useSelector(({ assets }) => assets);
+
+  console.log("djjfjdf", as);
+
+  useEffect(() => {
+    if (assets.value.length === 0) {
+      console.log("call");
+      dispatch(getAllAssets());
+    }
+  }, [assets.value.length, dispatch]);
+
+  if (assets.value.length === 0) {
+    return (
+      <div>
         <Header />
-        <Route path="/" exact component={Deck} />
-        <Route path="/assets" exact component={Assets} />
-        <Route exact path="/assets/:id" component={ChildDeck} />
-      </Router>
-    </AppContext.Provider>
+        <Spinner
+          size={120}
+          spinnerColor={"#333"}
+          spinnerWidth={2}
+          visible={true}
+        />
+      </div>
+    );
+  }
+  return (
+    <Router>
+      <Header />
+      <Route path="/" exact component={Deck} />
+      <Route path="/assets" exact component={Assets} />
+      <Route exact path="/assets/:id" component={ChildDeck} />
+    </Router>
   );
 };
 

@@ -1,8 +1,8 @@
-import React, { useState, useContext, Fragment } from "react";
+import React, { useState, Fragment } from "react";
+import { useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { useSprings } from "react-spring/hooks";
 import { useGesture } from "react-with-gesture";
-import { AppContext } from "../AppContext";
 
 import { useFetch2 } from "../utils/useFetch";
 
@@ -27,13 +27,15 @@ const trans = (r, s) =>
 
 function ChildDeck(prop) {
   const id = prop.match.params.id;
+  const assets = useSelector(({ assets }) => assets);
+  const { value, loading, info } = assets;
 
   const [gone] = useState(() => new Set());
 
-  const { value, loading, info } = useContext(AppContext);
+  const theValue = value && value.filter(c => c.hercId == id);
 
   const hercValue = useFetch2();
-  const len = 1; // value.length;
+  const len = theValue.length; // value.length;
   let [props, set] = useSprings(len, i => ({
     ...to(i),
     from: from(i)
@@ -114,8 +116,6 @@ function ChildDeck(prop) {
       </div>
     );
   }
-
-  const theValue = value && value.filter(c => c.hercId == id);
 
   if (theValue.length === 0) {
     return (

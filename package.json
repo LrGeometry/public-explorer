@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/linux08/swiper#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   }
 }

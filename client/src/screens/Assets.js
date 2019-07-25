@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 import AssetComp from "../components/AssetComp";
 import Spinner from "../components/Spinner";
@@ -6,10 +7,13 @@ import Spinner from "../components/Spinner";
 import { AppContext } from "../AppContext";
 
 const Assets = () => {
-  const data = useContext(AppContext);
+  // const data = useContext(AppContext);
 
   // const { value, loading, info } = data.dData;
-  const { value, loading, info } = data;
+  // const { value, loading, info } = data;
+
+  const assets = useSelector(({ assets }) => assets);
+  const { value, loading, info } = assets;
 
   //Remove duplicate
   const unique = Array.from(new Set(value.map(a => a.hercId))).map(id => {
