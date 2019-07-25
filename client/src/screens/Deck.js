@@ -1,4 +1,5 @@
 import React, { useState, useContext, Fragment } from "react";
+import { withRouter } from "react-router-dom";
 import { useSprings } from "react-spring/hooks";
 import { useGesture } from "react-with-gesture";
 import { AppContext } from "../AppContext";
@@ -30,10 +31,11 @@ function Deck() {
 
   const { value, loading, info } = useContext(AppContext);
 
-  const h = useFetch2();
-  console.log("hhh", h);
-  const hercValue = 0.4;
-  const len = 6; // value.length;
+  const hercValue = useFetch2();
+
+  console.log("jdjdj", loading);
+
+  const len = 8; // value.length;
   let [props, set] = useSprings(len, i => ({
     ...to(i),
     from: from(i)
@@ -120,4 +122,4 @@ function Deck() {
   }
 }
 
-export default Deck;
+export default withRouter(Deck);

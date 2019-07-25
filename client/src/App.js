@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Deck from "./screens/Deck";
 import ChildDeck from "./screens/ChildDeck";
@@ -10,14 +10,12 @@ import { AppContext } from "./AppContext";
 
 import "./styles/mainStyle.css";
 
-// const store = createStore(rootReducer);
-
 const App = () => {
   const data = useFetch();
-  // console.log("dkskds", data);
-  // const data = dat
+
+  const datum = useMemo(() => data, [data]);
   return (
-    <AppContext.Provider value={data}>
+    <AppContext.Provider value={datum}>
       <Router>
         <Header />
         <Route path="/" exact component={Deck} />

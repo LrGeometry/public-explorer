@@ -22,7 +22,7 @@ export const useFetch = () => {
   const [value, setValue] = useState([]);
   const [info, setInfo] = useState({});
 
-  // console.log("OOOo", value);
+  console.log("OOOo", loading);
   useEffect(() => {
     const rootRef = firebase.database().ref();
     rootRef
@@ -67,7 +67,6 @@ export const useFetch2 = () => {
       .then(response => response.json())
       .then(data => {
         const hercUSDV = data.find(c => c.symbol === "HERCUSDV");
-        console.log("jdjdjd", hercUSDV);
         setHerc(hercUSDV.h);
       })
       .catch(err => {});

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { withRouter } from "react-router-dom";
 import AssetComp from "../components/AssetComp";
 import Spinner from "../components/Spinner";
 
@@ -38,4 +39,4 @@ const Assets = () => {
   );
 };
 
-export default Assets;
+export default withRouter(Assets);

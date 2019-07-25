@@ -1,4 +1,5 @@
 import React, { useState, useContext, Fragment } from "react";
+import { withRouter } from "react-router-dom";
 import { useSprings } from "react-spring/hooks";
 import { useGesture } from "react-with-gesture";
 import { AppContext } from "../AppContext";
@@ -143,4 +144,4 @@ function ChildDeck(prop) {
   }
 }
 
-export default ChildDeck;
+export default withRouter(ChildDeck);
