@@ -1,5 +1,6 @@
 {
   "name": "tx-swiper",
+<<<<<<< HEAD
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,25 +18,28 @@
     "react-with-gesture": "^4.0.2",
     "reactstrap": "^8.0.0"
   },
+=======
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+>>>>>>> ed92e428a7a163b561fe04f855bc123d2e921ef5
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linux08/swiper.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linux08/swiper/issues"
+  },
+  "homepage": "https://github.com/linux08/swiper#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   }
 }

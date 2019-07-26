@@ -1,0 +1,3 @@
+export const GET_ASSET = "GET_ASSET";
+export const GET_ASSET_IS_LOADING = "GET_ASSET_IS_LOADING";
+export const GET_ASSET_ERROR = "GET_ASSET_ERROR";

@@ -9,7 +9,13 @@
 /coverage
 
 # production
-/build
+# /build
+
+.env
+
+/client/node_modules
+/clients/.env
+.reference.md
 
 # misc
 .DS_Store
@@ -17,7 +23,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
-/src/firebase.js
+# /src/firebase.js
 
 npm-debug.log*
 yarn-debug.log*
