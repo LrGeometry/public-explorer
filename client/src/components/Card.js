@@ -95,7 +95,7 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
             <div className="d-flex flex-column flex1 mt-1">
               <UpText left="Touchpoint" right={coordinates} />
               <UpText left="Date" right={header && header.dTime} />
-              <UpText left="Time" right={moment(timeStamp).format("LL")} />
+              <UpText left="Time" right={moment(timeStamp).format("H:mm:ss")} />
             </div>
             <div
               className=" d-flex flex-column flex5 mt-3"

@@ -30,6 +30,7 @@ export const getAllAssets = () => dispatch => {
         if (asset.toJSON().Public) {
           let transact = [];
           const dAsset = asset.toJSON();
+
           if (dAsset.transactions !== undefined) {
             Object.keys(dAsset.transactions).forEach(key => {
               let value = dAsset.transactions[key];

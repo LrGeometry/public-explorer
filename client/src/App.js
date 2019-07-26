@@ -18,7 +18,7 @@ const App = () => {
   const as = useSelector(state => state.assets);
   const assets = useSelector(({ assets }) => assets);
 
-  console.log("djjfjdf", as);
+ 
 
   useEffect(() => {
     if (assets.value.length === 0) {
