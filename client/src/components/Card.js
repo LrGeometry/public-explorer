@@ -39,6 +39,9 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
 
   const quote = `View ${Name}'s lifecycle on HERC Public Blockchain Explorer! ${`https://explorer.herc.one/assets/${hercId}`} You can begin your value chain legend here: https://herc.one/getstarted`;
 
+  const emailTitle = `View  ${Name}'s Supply Chain on HERC!`;
+  const emailQuote = `Use the  link  ${`https://explorer.herc.one/assets/${hercId}`} to follow the supply chain of ${Name}`;
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -51,17 +54,18 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
       key={i}
       style={{
         backgroundColor: "#4fD0e9",
-        transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`)
+        transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${0}px,0)`)
+        // transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`)
       }}
     >
       <animated.div
         className="flex1"
         style={{
-          // transform: interpolate([rot, scale], trans),
+          // transform: interpolate([rot, scale], trans)
           margin: -4,
           padding: -4
         }}
-        className="root2 flex flex9 border rounded-lg flex-column no-gutters no-space"
+        className="root2 flex flex9 border rounded-lg flex-column no-gutters no-space "
         {...bind(i)}
       >
         <div className="col-md-12 col-sm-12 no-space d-flex flex1 flex-column">
@@ -215,7 +219,13 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
           alt="pics"
         />
       </div>
-      <MediaShareModal quote={quote} show={show} handleClose={handleClose} />
+      <MediaShareModal
+        emailTitle={emailTitle}
+        emailQuote={emailQuote}
+        quote={quote}
+        show={show}
+        handleClose={handleClose}
+      />
     </animated.div>
   );
 };

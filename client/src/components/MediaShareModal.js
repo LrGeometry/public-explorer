@@ -28,7 +28,7 @@ import {
   ViberIcon
 } from "react-share";
 
-const MediaShare = ({ show, handleClose, quote }) => (
+const MediaShare = ({ show, handleClose, quote, emailTitle, emailQuote }) => (
   <Modal
     show={show}
     onHide={handleClose}
@@ -132,9 +132,9 @@ const MediaShare = ({ show, handleClose, quote }) => (
         <div className="col-sm-3">
           <EmailShareButton
             className="Demo__some-network__share-button col-sm-4"
-            url={"gmail.com"}
-            subject={quote}
-            body={quote}
+            url={""}
+            subject={emailTitle}
+            body={emailQuote}
           >
             <EmailIcon size={60} round />
           </EmailShareButton>
@@ -145,5 +145,3 @@ const MediaShare = ({ show, handleClose, quote }) => (
 );
 
 export default MediaShare;
-
-// <div className="d-flex flex1 mt-3 justify-content-center align-items-center">
