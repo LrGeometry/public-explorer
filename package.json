@@ -1,28 +1,8 @@
 {
   "name": "tx-swiper",
-<<<<<<< HEAD
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.19.0",
-    "bootstrap": "^4.3.1",
-    "firebase": "^6.2.4",
-    "moment": "^2.24.0",
-    "nuka-carousel": "^4.4.7",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "react-spinner-material": "^1.1.1",
-    "react-spring": "^7.2.8",
-    "react-with-gesture": "^4.0.2",
-    "reactstrap": "^8.0.0"
-  },
-=======
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
->>>>>>> ed92e428a7a163b561fe04f855bc123d2e921ef5
   "scripts": {
     "start": "node index",
     "test": "echo \"Error: no test specified\" && exit 1"
