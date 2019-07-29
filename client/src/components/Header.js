@@ -56,6 +56,12 @@ const Header = () => (
               Blockscanner
             </a>
           </li>
+
+          <li className="nav-item">
+            <a className="nav-link" href="https://purchase.herc.one/">
+              Top Up HERC
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
