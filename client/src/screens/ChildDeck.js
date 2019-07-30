@@ -137,7 +137,6 @@ function ChildDeck(prop) {
   } else {
     return (
       <Fragment>
-        <Header />
         <Fragment>{renderCards(theValue)}</Fragment>
       </Fragment>
     );

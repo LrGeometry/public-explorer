@@ -6,20 +6,19 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 
 const Style = styled.div`
   position: fixed;
-  left: 5vh;
+  left: 30%;
   top: 16%;
   z-index: 100000;
   background: rgba(0, 0, 0, 0.75);
   border-radius: 12px;
   box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1);
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 480px) {
     /* For mobile phones: */
-    left: 75vh;
-    height: 70vh;
-    width: 100%;
+    left: 5%;
+    width: 90%;
   }
   height: 70vh;
-  width: 100%;
+  width: 44%;
 
   .img {
     margin-top: 10px;
@@ -33,7 +32,7 @@ const Style = styled.div`
 
 const mapStyles = {
   width: "100%",
-  height: "80%"
+  height: "100%"
 };
 
 const apiKey = process.env.REACT_APP_GOOGLE_MAP_APIKEY;
@@ -51,7 +50,7 @@ class MapComp extends React.Component {
           google={this.props.google}
           zoom={8}
           style={mapStyles}
-          initialCenter={{ lat: latitude, lng: longitude }}
+          initialCenter={{ lat: latitude + 0.003, lng: longitude + 0.003 }}
         />
         <Marker position={{ lat: latitude, lng: longitude }} />
       </Style>
@@ -60,5 +59,5 @@ class MapComp extends React.Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey
+  apiKey: apiKey
 })(MapComp);
