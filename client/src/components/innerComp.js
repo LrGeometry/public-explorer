@@ -1,15 +1,31 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import pic from "../assets/copy-regular.svg";
 
-export const UpText = ({ left, right }) => (
+export const UpText = ({ left, toggleMap, right, coordinates }) => (
   <div className="d-flex flex-row ">
     <span className="col-md-4 no-space">
       <p className="small-text no-space mt-1"> {left}: </p>
     </span>
-    <span className="col-md-7 no-space ">
-      <p className="small-text bold no-space mt-1"> {right} </p>
-    </span>
+    <Fragment>
+      {coordinates ? (
+        <span className="col-md-7 no-space " onClick={toggleMap}>
+          <p
+            className="small-text bold no-space mt-1"
+            style={{
+              cursor: "pointer"
+            }}
+          >
+            {" "}
+            View on Map{" "}
+          </p>
+        </span>
+      ) : (
+        <span className="col-md-7 no-space ">
+          <p className="small-text bold no-space mt-1"> {right} </p>
+        </span>
+      )}
+    </Fragment>
   </div>
 );
 

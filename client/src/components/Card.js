@@ -6,6 +6,7 @@ import { animated, interpolate } from "react-spring/hooks";
 import { UpText } from "./InnerComp";
 import InnerContent from "./InnerCont";
 import MediaShareModal from "./MediaShareModal";
+import Map from "./Map";
 
 import camera from "../assets/camera-solid.svg";
 import circle from "../assets/circle-solid.svg";
@@ -26,7 +27,8 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
   const header = newData && newData[i] && newData[i].header;
   const hercId = newData && newData[i] && newData[i].hercId;
   const Name = newData && newData[i] && newData[i].Name;
-  const coordinates = newData && newData[i] && newData[i].coordinates;
+  const coordinates =
+    newData && newData[i] && newData[i].data && newData[i].data.coords;
   const ipfsHash =
     newData && newData[i] && newData[i].hashes && newData[i].hashes.ipfsHash;
   const logo = newData && newData[i] && newData[i].Logo;
@@ -43,9 +45,14 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
   const emailQuote = `Use the  link  ${`https://explorer.herc.one/assets/${hercId}`} to follow the supply chain of ${Name}`;
 
   const [show, setShow] = useState(false);
+  const [showMap, setShowMap] = useState(false);
 
   const handleClose = () => {
     setShow(!show);
+  };
+
+  const toggleMap = () => {
+    setShowMap(!showMap);
   };
 
   return (
@@ -91,13 +98,21 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
           </div>
 
           <div
-            className=" ml-3 mr-3 d-flex flex7 flex-column"
+            className="ml-3 mr-3 d-flex flex7 flex-column"
             style={{
               backgroundColor: "#FFFEFF"
             }}
           >
             <div className="d-flex flex-column flex1 mt-1">
-              <UpText left="Touchpoint" right={coordinates} />
+              <Fragment>
+                {coordinates ? (
+                  <UpText
+                    left="Touchpoint"
+                    toggleMap={toggleMap}
+                    coordinates={coordinates}
+                  />
+                ) : null}
+              </Fragment>
               <UpText left="Date" right={header && header.dTime} />
               <UpText left="Time" right={moment(timeStamp).format("H:mm:ss")} />
             </div>
@@ -219,6 +234,14 @@ const Card = ({ i, x, y, rot, scale, trans, newData, bind, data, herc }) => {
           alt="pics"
         />
       </div>
+
+      <Fragment>
+        {coordinates ? (
+          showMap ? (
+            <Map coordinates={coordinates} toggleMap={toggleMap} />
+          ) : null
+        ) : null}
+      </Fragment>
       <MediaShareModal
         emailTitle={emailTitle}
         emailQuote={emailQuote}
