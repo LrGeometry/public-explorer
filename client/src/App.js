@@ -18,11 +18,8 @@ const App = () => {
   const as = useSelector(state => state.assets);
   const assets = useSelector(({ assets }) => assets);
 
- 
-
   useEffect(() => {
     if (assets.value.length === 0) {
-      console.log("call");
       dispatch(getAllAssets());
     }
   }, [assets.value.length, dispatch]);

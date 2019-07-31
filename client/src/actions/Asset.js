@@ -47,8 +47,6 @@ export const getAllAssets = () => dispatch => {
 
       const withoutTrans = storedValue.filter(c => c.transactions);
       const newData = flatten(reformatData(withoutTrans));
-
-      console.log("kkdkdd", newData);
       dispatch(getAssets(newData));
     })
     .catch(err => console.log("err", err.message));

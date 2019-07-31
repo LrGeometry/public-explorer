@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import close from "../assets/close.svg";
 
-import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 
 const Style = styled.div`
   position: fixed;
@@ -38,9 +38,27 @@ const mapStyles = {
 const apiKey = process.env.REACT_APP_GOOGLE_MAP_APIKEY;
 
 class MapComp extends React.Component {
+  state = {
+    showInfoWindow: false
+  };
+  handleMouseOver = e => {
+    console.log("kdkfjdjfj");
+    this.setState({
+      showInfoWindow: true
+    });
+  };
+
+  handleMouseExit = e => {
+    this.setState({
+      showInfoWindow: false
+    });
+  };
+
   render() {
     const { toggleMap, coordinates } = this.props;
     const { latitude, longitude } = coordinates;
+
+    const { showInfoWindow } = this.state;
     return (
       <Style>
         <div className="img" onClick={toggleMap}>
@@ -51,8 +69,19 @@ class MapComp extends React.Component {
           zoom={8}
           style={mapStyles}
           initialCenter={{ lat: latitude + 0.003, lng: longitude + 0.003 }}
-        />
-        <Marker position={{ lat: latitude, lng: longitude }} />
+        >
+          <Marker
+            position={{ lat: latitude, lng: longitude }}
+            onMouseOver={this.handleMouseOver}
+            onMouseOut={this.handleMouseExit}
+          >
+            {showInfoWindow && (
+              <InfoWindow>
+                <h5> hhhggghghg</h5>
+              </InfoWindow>
+            )}
+          </Marker>
+        </Map>
       </Style>
     );
   }

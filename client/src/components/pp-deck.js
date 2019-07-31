@@ -27,44 +27,10 @@ function Deck() {
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState([]);
 
-  // useEffect(() => {
-  //   var paramFromURL = 364;
-  //   const rootRef = firebase.database().ref();
-  //   rootRef
-  //     .child("assets")
-  //     .once("value")
-  //     .then(snapshot => {
-  //       setLoading(false);
-
-  //       let storedValue = [];
-  //       snapshot.forEach(asset => {
-  //         const assset = asset.toJSON();
-  //         storedValue.push(asset.toJSON());
-  //         if (asset.toJSON().hercId === paramFromURL) {
-  //           // check if asset has any transaction history
-  //           if (asset.toJSON().transactions) {
-  //             // return an iterable list of transactions
-  //           } else {
-  //             // return " no transaction history"
-  //           }
-  //           // return asset
-  //         } else {
-  //           // return "no asset matched given hercId"
-  //         }
-  //       });
-  //       console.log("storedvalue", storedValue);
-  //       setValue(storedValue);
-  //     });
-  // }, []);
-
   let [props, set] = useSprings(10, i => ({
     ...to(i),
     from: from(i)
   }));
-  // const { value, loading } = useFetch();
-  // console.log("valeu", loading);
-
-  // console.log("valii", value);
 
   const bind = useGesture(
     ({
@@ -116,23 +82,7 @@ function Deck() {
         />
       </div>
     );
-  }
-
-  // return value.splice(55).map((c, i) => {
-  //   return (
-  //     <Card
-  //       i={i}
-  //       // x={props[0].x}
-  //       // y={props[0].y}
-  //       // rot={rot}
-  //       // scale={scale}
-  //       trans={trans}
-  //       data={data}
-  //       bind={bind}
-  //     />
-  //   );
-  // });
-  else {
+  } else {
     const bb = value.splice(10);
     const transact = [];
 
@@ -144,10 +94,6 @@ function Deck() {
         return value;
       });
     }
-
-    // }
-
-    console.log("transact", transact);
 
     return props.map(({ x, y, rot, scale }, i) => (
       <Card
